@@ -1,11 +1,14 @@
 import { FC } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import styles from './Sidebar.module.scss'
 
 const Sidebar: FC = () => {
 	return (
 		<div className={styles.sidebar}>
 			<div className={styles.logo}>
-				<img alt='Logo' src='/logo.svg'></img>
+				<Link to={'/'}>
+					<img alt='Logo' src='/logo.svg'></img>
+				</Link>
 			</div>
 
 			<div className={styles.greeting}>
@@ -19,24 +22,43 @@ const Sidebar: FC = () => {
 				</div>
 
 				<div className={styles.menuButtons}>
-					<div className={styles.menuVoting}>
+					<NavLink
+						className={({ isActive }) =>
+							[isActive ? styles.menuVotingActive : styles.menuVoting].join('')
+						}
+						to={'/voting'}
+					>
 						<div className={styles.menuVotingImage}></div>
 						<button className={styles.menuVotingBtn} type='button'>
 							VOTING
 						</button>
-					</div>
-					<div className={styles.menuBreeds}>
+					</NavLink>
+
+					<NavLink
+						className={({ isActive }) =>
+							[isActive ? styles.menuBreedsActive : styles.menuBreeds].join('')
+						}
+						to={'/breeds'}
+					>
 						<div className={styles.menuBreedsImage}></div>
 						<button className={styles.menuBreedsBtn} type='button'>
 							BREEDS
 						</button>
-					</div>
-					<div className={styles.menuGallery}>
+					</NavLink>
+
+					<NavLink
+						className={({ isActive }) =>
+							[isActive ? styles.menuGalleryActive : styles.menuGallery].join(
+								''
+							)
+						}
+						to={'/gallery'}
+					>
 						<div className={styles.menuGalleryImage}></div>
 						<button className={styles.menuGalleryBtn} type='button'>
 							GALLERY
 						</button>
-					</div>
+					</NavLink>
 				</div>
 			</div>
 		</div>

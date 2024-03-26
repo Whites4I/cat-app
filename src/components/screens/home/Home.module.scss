@@ -1,15 +1,14 @@
-.navbar {
+.home {
 	height: calc(100vh - 60px);
-	width: 680px;
+	max-width: 680px;
 	background-color: #fbe0dc;
 	border-radius: 20px;
 	margin-left: 137px;
+	margin-top: 30px;
 
 	img {
 		position: relative;
 		right: 65px;
 		bottom: 30px;
-		width: 775px;
-		height: auto;
 	}
 }

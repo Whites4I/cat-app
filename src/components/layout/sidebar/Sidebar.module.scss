@@ -1,16 +1,49 @@
 @import '../../../assets/styles/_mixins.scss';
 
+@mixin menuCart($url, $color) {
+	box-sizing: border-box;
+	width: 138px;
+	height: 198px;
+	background-image: url($url);
+	background-color: $color;
+	border: 4px solid rgba(255, 255, 255, 0.6);
+	border-radius: 20px;
+	margin-right: 16px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	transition: active 1s ease-in-out;
+}
+
+@mixin menuCartHover {
+	& {
+		border: 4px solid rgba(255, 255, 255, 1);
+		transition: 0.2s;
+	}
+}
+
+@mixin menuCartActive {
+	& {
+		border: 4px solid #fbe0dc;
+		transition: 0.1s;
+	}
+}
+
 .sidebar {
 	position: sticky;
 	display: flex;
 	flex-direction: column;
-	width: 446px;
-	margin-left: auto;
+	margin-top: 30px;
 
 	.logo {
 		width: 106px;
 		height: 24px;
 		margin-bottom: 80px;
+
+		img {
+			cursor: pointer;
+			width: 106px;
+			height: 24px;
+		}
 	}
 
 	.greeting {
@@ -39,6 +72,25 @@
 
 		.menuButtons {
 			display: flex;
+
+			.menuVotingActive {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				.menuVotingImage {
+					@include menuCart('/vote-table.svg', #b4b7ff);
+					@include menuCartActive();
+				}
+				.menuVotingBtn {
+					@include btnContainer(138px, 36px, 10px);
+					@include btnACtive();
+				}
+
+				&:hover > .menuVotingImage {
+					@include menuCartHover();
+				}
+			}
 
 			.menuVoting {
 				display: flex;
@@ -69,6 +121,25 @@
 				}
 			}
 
+			.menuBreedsActive {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				.menuBreedsImage {
+					@include menuCart('/pet-breeds.svg', #97eab9);
+					@include menuCartActive();
+				}
+				.menuBreedsBtn {
+					@include btnContainer(138px, 36px, 10px);
+					@include btnACtive();
+				}
+
+				&:hover > .menuBreedsImage {
+					@include menuCartHover();
+				}
+			}
+
 			.menuBreeds {
 				display: flex;
 				flex-direction: column;
@@ -95,6 +166,25 @@
 				}
 				.menuBreedsBtn {
 					@include btnContainer(138px, 36px, 10px);
+				}
+			}
+
+			.menuGalleryActive {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				.menuGalleryImage {
+					@include menuCart('/images-search.svg', #ffd280);
+					@include menuCartActive();
+				}
+				.menuGalleryBtn {
+					@include btnContainer(138px, 36px, 10px);
+					@include btnACtive();
+				}
+
+				&:hover > .menuGalleryImage {
+					@include menuCartHover();
 				}
 			}
 
