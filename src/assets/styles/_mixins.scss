@@ -1,0 +1,59 @@
+@mixin btnContainer($width, $height, $radius: 0) {
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 2px;
+	color: #ff868e;
+	background-color: #ffffff;
+	border: none;
+	cursor: pointer;
+	transition: active 1s ease-in-out;
+	width: $width;
+	height: $height;
+	@if $radius != 0 {
+		border-radius: $radius;
+	}
+}
+
+@mixin btnHover {
+	& {
+		background-color: #fbe0dc;
+		transition: 0.2s;
+	}
+}
+
+@mixin btnACtive {
+	& {
+		color: #ffffff;
+		fill: #ffffff;
+		background-color: #ff868e;
+		transition: 0.1s;
+	}
+}
+
+@mixin menuCart($url, $color) {
+	box-sizing: border-box;
+	width: 138px;
+	height: 198px;
+	background-image: url($url);
+	background-color: $color;
+	border: 4px solid rgba(255, 255, 255, 0.6);
+	border-radius: 20px;
+	margin-right: 16px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	transition: active 1s ease-in-out;
+}
+
+@mixin menuCartHover {
+	& {
+		border: 4px solid rgba(255, 255, 255, 1);
+		transition: 0.2s;
+	}
+}
+
+@mixin menuCartActive {
+	& {
+		border: 4px solid #fbe0dc;
+		transition: 0.1s;
+	}
+}

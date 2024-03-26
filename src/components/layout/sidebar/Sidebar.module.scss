@@ -1,0 +1,132 @@
+@import '../../../assets/styles/_mixins.scss';
+
+.sidebar {
+	position: sticky;
+	display: flex;
+	flex-direction: column;
+	width: 446px;
+	margin-left: auto;
+
+	.logo {
+		width: 106px;
+		height: 24px;
+		margin-bottom: 80px;
+	}
+
+	.greeting {
+		.greetingHi {
+			color: #000000;
+			font-size: 44px;
+			line-height: 58px;
+			text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			margin-bottom: 10px;
+		}
+
+		.greetingText {
+			color: #8c8c8c;
+			font-size: 20px;
+			text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			margin-bottom: 60px;
+		}
+	}
+
+	.menuMain {
+		.menuText {
+			color: #1d1d1d;
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+
+		.menuButtons {
+			display: flex;
+
+			.menuVoting {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				&:hover > .menuVotingImage {
+					@include menuCartHover();
+				}
+
+				&:hover > .menuVotingBtn {
+					@include btnHover();
+				}
+
+				&:active > .menuVotingImage {
+					@include menuCartActive();
+				}
+
+				&:active > .menuVotingBtn {
+					@include btnACtive();
+				}
+
+				.menuVotingImage {
+					@include menuCart('/vote-table.svg', #b4b7ff);
+				}
+				.menuVotingBtn {
+					@include btnContainer(138px, 36px, 10px);
+				}
+			}
+
+			.menuBreeds {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				&:hover > .menuBreedsImage {
+					@include menuCartHover();
+				}
+
+				&:hover > .menuBreedsBtn {
+					@include btnHover();
+				}
+
+				&:active > .menuBreedsImage {
+					@include menuCartActive();
+				}
+
+				&:active > .menuBreedsBtn {
+					@include btnACtive();
+				}
+
+				.menuBreedsImage {
+					@include menuCart('/pet-breeds.svg', #97eab9);
+				}
+				.menuBreedsBtn {
+					@include btnContainer(138px, 36px, 10px);
+				}
+			}
+
+			.menuGallery {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				&:hover > .menuGalleryImage {
+					@include menuCartHover();
+				}
+
+				&:hover > .menuGalleryBtn {
+					@include btnHover();
+				}
+
+				&:active > .menuGalleryImage {
+					@include menuCartActive();
+				}
+
+				&:active > .menuGalleryBtn {
+					@include btnACtive();
+				}
+
+				.menuGalleryImage {
+					@include menuCart('/images-search.svg', #ffd280);
+				}
+
+				.menuGalleryBtn {
+					@include btnContainer(138px, 36px, 10px);
+				}
+			}
+		}
+	}
+}
