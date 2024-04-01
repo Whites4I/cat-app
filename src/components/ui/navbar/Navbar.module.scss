@@ -1,0 +1,102 @@
+@import '../../../assets/styles/_mixins.scss';
+
+.navbar {
+	display: flex;
+
+	.socialPagesBtn {
+		display: flex;
+		position: relative;
+		right: 30px;
+
+		.likesNavActive {
+			.likesNavBtn {
+				margin-right: 10px;
+				@include btnContainer(60px, 60px, 20px);
+				@include btnActive;
+				.likesNavImage {
+					fill: #fff;
+				}
+			}
+		}
+
+		.likesNav {
+			.likesNavBtn {
+				margin-right: 10px;
+				@include btnContainer(60px, 60px, 20px);
+				.likesNavImage {
+					fill: #ff868e;
+				}
+
+				&:hover {
+					@include btnHover;
+				}
+				&:active {
+					@include btnActive;
+					.likesNavImage {
+						fill: #fff;
+					}
+				}
+			}
+		}
+
+		.favoritesNavActive {
+			.favoritesNavBtn {
+				margin-right: 10px;
+				@include btnContainer(60px, 60px, 20px);
+				@include btnActive;
+				.favoritesNavImage {
+					fill: #fff;
+				}
+			}
+		}
+
+		.favoritesNav {
+			.favoritesNavBtn {
+				margin-right: 10px;
+				@include btnContainer(60px, 60px, 20px);
+				.favoritesNavImage {
+					fill: #ff868e;
+				}
+
+				&:hover {
+					@include btnHover;
+				}
+				&:active {
+					@include btnActive;
+					.favoritesNavImage {
+						fill: #fff;
+					}
+				}
+			}
+		}
+
+		.dislikesNavActive {
+			.dislikesNavBtn {
+				@include btnContainer(60px, 60px, 20px);
+				@include btnActive;
+				.dislikesNavImage {
+					fill: #fff;
+				}
+			}
+		}
+
+		.dislikesNav {
+			.dislikesNavBtn {
+				@include btnContainer(60px, 60px, 20px);
+				.dislikesNavImage {
+					fill: #ff868e;
+				}
+
+				&:hover {
+					@include btnHover;
+				}
+				&:active {
+					@include btnActive;
+					.dislikesNavImage {
+						fill: #fff;
+					}
+				}
+			}
+		}
+	}
+}

@@ -6,7 +6,7 @@
 	background-color: #ffffff;
 	border: none;
 	cursor: pointer;
-	transition: active 1s ease-in-out;
+	transition: 0.2s ease-in-out;
 	width: $width;
 	height: $height;
 	@if $radius != 0 {
@@ -18,15 +18,14 @@
 	& {
 		color: #ff868e;
 		background-color: #fbe0dc;
-		transition: 0.1s;
 	}
 }
 
-@mixin btnACtive {
+@mixin btnActive {
 	& {
+		background-color: #ff868e;
+
 		color: #ffffff;
 		fill: #ffffff;
-		background-color: #ff868e;
-		transition: 0.1s;
 	}
 }

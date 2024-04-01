@@ -84,7 +84,7 @@
 				}
 				.menuVotingBtn {
 					@include btnContainer(138px, 36px, 10px);
-					@include btnACtive();
+					@include btnActive();
 				}
 
 				&:hover > .menuVotingImage {
@@ -110,7 +110,7 @@
 				}
 
 				&:active > .menuVotingBtn {
-					@include btnACtive();
+					@include btnActive();
 				}
 
 				.menuVotingImage {
@@ -132,7 +132,7 @@
 				}
 				.menuBreedsBtn {
 					@include btnContainer(138px, 36px, 10px);
-					@include btnACtive();
+					@include btnActive();
 				}
 
 				&:hover > .menuBreedsImage {
@@ -158,7 +158,7 @@
 				}
 
 				&:active > .menuBreedsBtn {
-					@include btnACtive();
+					@include btnActive();
 				}
 
 				.menuBreedsImage {
@@ -180,7 +180,7 @@
 				}
 				.menuGalleryBtn {
 					@include btnContainer(138px, 36px, 10px);
-					@include btnACtive();
+					@include btnActive();
 				}
 
 				&:hover > .menuGalleryImage {
@@ -206,7 +206,7 @@
 				}
 
 				&:active > .menuGalleryBtn {
-					@include btnACtive();
+					@include btnActive();
 				}
 
 				.menuGalleryImage {

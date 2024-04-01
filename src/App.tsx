@@ -1,8 +1,9 @@
+import { FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import AppRouter from './router/AppRouter'
 
-const App = () => {
+const App: FC = () => {
 	return (
 		<BrowserRouter>
 			<div className='container'>
