@@ -1,17 +1,9 @@
 import { FC } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import AppRouter from './router/AppRouter'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
 
 const App: FC = () => {
-	return (
-		<BrowserRouter>
-			<div className='container'>
-				<Layout />
-				<AppRouter />
-			</div>
-		</BrowserRouter>
-	)
+	return <RouterProvider router={router} />
 }
 
 export default App

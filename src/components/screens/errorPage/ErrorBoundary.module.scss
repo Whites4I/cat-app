@@ -1,0 +1,11 @@
+.ErrorBoundary {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+
+	.errorText {
+		font-size: 50px;
+		color: red;
+	}
+}
