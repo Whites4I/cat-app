@@ -1,4 +1,7 @@
 @mixin btnContainer($width, $height, $radius: 0) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: 12px;
 	line-height: 16px;
 	letter-spacing: 2px;

@@ -175,7 +175,7 @@
 				justify-content: center;
 
 				.menuGalleryImage {
-					@include menuCart('/images-search.svg', #ffd280);
+					@include menuCart('/image-search.svg', #ffd280);
 					@include menuCartActive();
 				}
 				.menuGalleryBtn {
@@ -210,7 +210,7 @@
 				}
 
 				.menuGalleryImage {
-					@include menuCart('/images-search.svg', #ffd280);
+					@include menuCart('/image-search.svg', #ffd280);
 				}
 
 				.menuGalleryBtn {
