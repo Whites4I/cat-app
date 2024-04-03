@@ -1,0 +1,15 @@
+@import '../../../..//assets/styles/_mixins';
+
+.back {
+	.backBtn {
+		@include btnContainer(40px, 40px, 10px);
+		@include btnHover;
+
+		&:hover {
+			@include btnActive;
+			.backImage {
+				fill: #fff;
+			}
+		}
+	}
+}

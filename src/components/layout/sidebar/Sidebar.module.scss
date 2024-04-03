@@ -8,8 +8,6 @@
 	background-color: $color;
 	border: 4px solid rgba(255, 255, 255, 0.6);
 	border-radius: 20px;
-	margin-right: 16px;
-	margin-bottom: 10px;
 	cursor: pointer;
 	transition: active 1s ease-in-out;
 }
@@ -77,6 +75,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				margin-right: 16px;
+				gap: 10px;
 
 				.menuVotingImage {
 					@include menuCart('/vote-table.svg', #b4b7ff);
@@ -96,6 +96,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				margin-right: 16px;
+				gap: 10px;
 
 				&:hover > .menuVotingImage {
 					@include menuCartHover();
@@ -125,6 +127,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				margin-right: 16px;
+				gap: 10px;
 
 				.menuBreedsImage {
 					@include menuCart('/pet-breeds.svg', #97eab9);
@@ -144,6 +148,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				margin-right: 16px;
+				gap: 10px;
 
 				&:hover > .menuBreedsImage {
 					@include menuCartHover();
@@ -173,6 +179,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				margin-right: 16px;
+				gap: 10px;
 
 				.menuGalleryImage {
 					@include menuCart('/image-search.svg', #ffd280);
@@ -192,6 +200,8 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				margin-right: 16px;
+				gap: 10px;
 
 				&:hover > .menuGalleryImage {
 					@include menuCartHover();

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../../ui/navbar/Navbar'
 import styles from './Main.module.scss'
+import Navbar from './navbar/Navbar'
 
 const Main: FC = () => {
 	return (
