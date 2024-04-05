@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { catApi } from '../services/CatService'
-// import { reducer as favoritesReducer } from './favorites/favorites.slice.js'
+import { reducer as favoritesReducer } from './favorites/favorites.slice.js'
 
 const reducers = combineReducers({
 	[catApi.reducerPath]: catApi.reducer,
+	favorites: favoritesReducer,
 })
 
 export const store = configureStore({

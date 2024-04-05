@@ -1,27 +1,29 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { URL } from '../api/url'
-
-interface ICat {
-	categories?: []
-	breeds?: []
-	id: string
-	url: string
-	width: number
-	height: number
-}
-
-const API_key =
-	'live_yKEoz07z9GKTqn22fH4zflgr8MedVdFEKeqfxSraDwvmQSrxCCiJzYi1nQI7RKzY'
+import { API_KEY } from '../API/api_key'
+import { URL } from '../API/url'
+import { ICat } from '../shared/types/index.interface'
 
 export const catApi = createApi({
 	reducerPath: 'catApi',
+
+	tagTypes: ['Cat'],
+
 	baseQuery: fetchBaseQuery({
 		baseUrl: URL,
-		headers: { 'x-api-key': API_key },
+		headers: { 'x-api-key': API_KEY },
 	}),
+
 	endpoints: builder => ({
-		getRandomCat: builder.query<ICat[], string>({
-			query: name => `${name}`,
+		getRandomCat: builder.query<ICat[] | undefined, null>({
+			query: () => `images/search`,
+			providesTags: result =>
+				result
+					? [
+							...result.map(({ id }) => ({ type: 'Cat' as const, id })),
+							{ type: 'Cat', id: 'LIST' },
+							// eslint-disable-next-line no-mixed-spaces-and-tabs
+					  ]
+					: [{ type: 'Cat', id: 'LIST' }],
 		}),
 	}),
 })

@@ -1,12 +1,21 @@
 import { FC } from 'react'
+import { useAppDispatch } from '../../../hooks/useAppDispatch'
+import { useAppSelector } from '../../../hooks/useAppSelector'
 import { useGetRandomCatQuery } from '../../../services/CatService'
+import { ICat } from '../../../shared/types/index.interface'
 import BackBtn from '../../ui/buttons/BackBtn/BackBtn'
 import Table from '../../ui/table/Table'
 import styles from './Voting.module.scss'
 
 const Voting: FC = () => {
-	const { data, error, isLoading } = useGetRandomCatQuery('images/search')
+	const { data } = useGetRandomCatQuery(null)
 	const dataObj = data?.find(cat => cat.url)
+
+	const { toggleFavorites } = useAppDispatch()
+
+	const favorites = useAppSelector(state => state.favorites)
+
+	console.log(favorites)
 
 	return (
 		<div className={styles.voting}>
@@ -46,6 +55,9 @@ const Voting: FC = () => {
 						className={styles.favoritesBtn}
 						type='button'
 						title='favorites'
+						onClick={() => {
+							toggleFavorites(dataObj as ICat)
+						}}
 					>
 						<svg
 							width='30'

@@ -1,24 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { ICat } from '../../shared/types/index.interface'
 
-// interface I favorites {}
-
-const initialState = {}
+const initialState: ICat[] = []
 
 export const favoritesSlice = createSlice({
 	name: 'favorites',
 	initialState,
 	reducers: {
-		// toggleFavorites: (state, action: PayloadAction<>) => {
-		// 	const isExist = state.some(item => item.id === recipe.id)
-		// 	if (isExist) {
-		// 		const index = state.findIndex(item => item.id === recipe.id)
-		// 		if (index !== -1) {
-		// 			state.splice(index, 1)
-		// 		}
-		// 	} else {
-		// 		state.push(recipe)
-		// 	}
-		// },
+		toggleFavorites: (state, { payload: cat }: PayloadAction<ICat>) => {
+			const isExist = state.some(item => item.id === cat.id)
+			if (isExist) {
+				const index = state.findIndex(item => item.id === cat.id)
+
+				if (index !== -1) {
+					state.splice(index, 1)
+				}
+			} else {
+				state.push(cat)
+			}
+		},
 	},
 })
 

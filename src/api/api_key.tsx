@@ -1,0 +1,2 @@
+export const API_KEY =
+	'live_yKEoz07z9GKTqn22fH4zflgr8MedVdFEKeqfxSraDwvmQSrxCCiJzYi1nQI7RKzY'
