@@ -5,7 +5,6 @@ import { ICat } from '../shared/types/index.interface'
 
 export const catApi = createApi({
 	reducerPath: 'catApi',
-
 	tagTypes: ['Cat'],
 
 	baseQuery: fetchBaseQuery({
@@ -28,4 +27,4 @@ export const catApi = createApi({
 	}),
 })
 
-export const { useGetRandomCatQuery } = catApi
+export const { useGetRandomCatQuery, useLazyGetRandomCatQuery } = catApi

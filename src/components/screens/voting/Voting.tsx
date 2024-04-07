@@ -1,21 +1,24 @@
 import { FC } from 'react'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
-import { useAppSelector } from '../../../hooks/useAppSelector'
-import { useGetRandomCatQuery } from '../../../services/CatService'
+import { useGetObjG } from '../../../hooks/useGetObj'
+import {
+	useGetRandomCatQuery,
+	useLazyGetRandomCatQuery,
+} from '../../../services/CatService'
 import { ICat } from '../../../shared/types/index.interface'
 import BackBtn from '../../ui/buttons/BackBtn/BackBtn'
+import Loader from '../../ui/loader/Loader'
 import Table from '../../ui/table/Table'
 import styles from './Voting.module.scss'
 
 const Voting: FC = () => {
-	const { data } = useGetRandomCatQuery(null)
-	const dataObj = data?.find(cat => cat.url)
+	const { isFetching, data: firstData } = useGetRandomCatQuery(null)
+	const objCat = useGetObjG<ICat>(firstData)
 
-	const { toggleFavorites } = useAppDispatch()
+	const [getNewCat, { isLoading, data }] = useLazyGetRandomCatQuery()
+	const nextCat = useGetObjG<ICat>(data)
 
-	const favorites = useAppSelector(state => state.favorites)
-
-	console.log(favorites)
+	const { toggleFavorites, toggleDislikes, toggleLikes } = useAppDispatch()
 
 	return (
 		<div className={styles.voting}>
@@ -30,10 +33,26 @@ const Voting: FC = () => {
 			</div>
 
 			<div className={styles.voteSection}>
-				<img className={styles.image} alt='cat' src={dataObj?.url}></img>
+				<div className={styles.imageWrapper}>
+					{isLoading || isFetching ? (
+						<Loader />
+					) : nextCat ? (
+						<img className={styles.image} alt='cat' src={nextCat?.url}></img>
+					) : (
+						<img className={styles.image} alt='cat' src={objCat?.url}></img>
+					)}
+				</div>
 
 				<div className={styles.voteBtn}>
-					<button className={styles.likesBtn} type='button' title='likes'>
+					<button
+						className={styles.likesBtn}
+						type='button'
+						title='likes'
+						onClick={() => {
+							getNewCat(null)
+							toggleLikes(objCat as ICat)
+						}}
+					>
 						<svg
 							width='30'
 							height='30'
@@ -56,7 +75,7 @@ const Voting: FC = () => {
 						type='button'
 						title='favorites'
 						onClick={() => {
-							toggleFavorites(dataObj as ICat)
+							toggleFavorites(objCat as ICat)
 						}}
 					>
 						<svg
@@ -76,7 +95,15 @@ const Voting: FC = () => {
 						</svg>
 					</button>
 
-					<button className={styles.dislikesBtn} type='button' title='dislikes'>
+					<button
+						className={styles.dislikesBtn}
+						type='button'
+						title='dislikes'
+						onClick={() => {
+							getNewCat(null)
+							toggleDislikes(objCat as ICat)
+						}}
+					>
 						<svg
 							width='30'
 							height='30'

@@ -1,0 +1,33 @@
+.carts {
+	display: flex;
+	align-content: flex-start;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	gap: 15px;
+	overflow: auto;
+	height: calc(100vh - 230px);
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: #f8f8f7;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: #fbe0dc;
+		border-radius: 15px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: #ff868e;
+	}
+
+	&:scrollrad {
+		background: #ff868e;
+	}
+}
