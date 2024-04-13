@@ -6,7 +6,7 @@ import Table from '../../ui/table/Table'
 import styles from './Favorites.module.scss'
 
 const Favorites: FC = () => {
-	const favorites = useAppSelector(state => state.favorites)
+	const { favorites } = useAppSelector(state => state.toggleCat)
 
 	return (
 		<div className={styles.favorites}>

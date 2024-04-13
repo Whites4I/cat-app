@@ -6,7 +6,7 @@ import Table from '../../ui/table/Table'
 import styles from './Likes.module.scss'
 
 const Likes: FC = () => {
-	const likes = useAppSelector(state => state.likes)
+	const { likes } = useAppSelector(state => state.toggleCat)
 
 	return (
 		<div className={styles.likes}>

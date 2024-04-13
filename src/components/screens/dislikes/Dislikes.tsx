@@ -5,8 +5,8 @@ import Carts from '../../ui/section-carts/Carts'
 import Table from '../../ui/table/Table'
 import styles from './Dislikes.module.scss'
 
-const Likes: FC = () => {
-	const dislikes = useAppSelector(state => state.dislikes)
+const Dislikes: FC = () => {
+	const { dislikes } = useAppSelector(state => state.toggleCat)
 
 	return (
 		<div className={styles.dislikes}>
@@ -27,4 +27,4 @@ const Likes: FC = () => {
 	)
 }
 
-export default Likes
+export default Dislikes
