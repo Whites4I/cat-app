@@ -7,6 +7,7 @@ import {
 } from '../../../services/CatService'
 import { ICat } from '../../../shared/types/index.interface'
 import BackBtn from '../../ui/buttons/BackBtn/BackBtn'
+import HistoryCart from '../../ui/history-cart/HistoryCart'
 import Loader from '../../ui/loader/Loader'
 import Table from '../../ui/table/Table'
 import styles from './Voting.module.scss'
@@ -121,7 +122,9 @@ const Voting: FC = () => {
 						</svg>
 					</button>
 				</div>
-				<div className={styles.logSection}></div>
+			</div>
+			<div className={styles.logSection}>
+				<HistoryCart />
 			</div>
 		</div>
 	)

@@ -1,9 +1,8 @@
 .carts {
 	display: flex;
-	align-content: flex-start;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 15px;
+
 	overflow: auto;
 	height: calc(100vh - 230px);
 
@@ -29,5 +28,20 @@
 
 	&:scrollrad {
 		background: #ff868e;
+	}
+
+	.cart {
+		display: grid;
+		grid-template-columns: 200px 200px 200px;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+			'one two three'
+			'one four four'
+			'five four four'
+			'six seven eight'
+			'nine nine eight'
+			'nine nine ten';
+		gap: 15px;
+		justify-items: stretch;
 	}
 }

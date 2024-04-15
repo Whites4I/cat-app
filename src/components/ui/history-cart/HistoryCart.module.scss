@@ -1,0 +1,33 @@
+.historyCart {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	width: 100%;
+	background-color: blueviolet;
+	/* background-color: #f8f8f7; */
+	border-radius: 10px;
+	font-size: 16px;
+	line-height: 24px;
+	color: #8c8c8c;
+	padding: 20px;
+	box-sizing: border-box;
+
+	.time {
+		width: 61px;
+		height: 30px;
+		background-color: #fff;
+		border-radius: 5px;
+	}
+
+	.text {
+		margin-left: 20px;
+	}
+
+	.typeEmoji {
+		width: 61px;
+		height: 30px;
+		background-color: #da1212;
+		border-radius: 5px;
+		margin-left: auto;
+	}
+}

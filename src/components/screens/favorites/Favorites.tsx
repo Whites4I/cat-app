@@ -1,12 +1,16 @@
 import { FC } from 'react'
 import { useAppSelector } from '../../../hooks/useAppSelector'
+import { useDivideBlock } from '../../../hooks/useDivideBlock'
+import { ICat } from '../../../shared/types/index.interface'
 import BackBtn from '../../ui/buttons/BackBtn/BackBtn'
-import Carts from '../../ui/section-carts/Carts'
+import GridCarts from '../../ui/carts/GridCarts'
 import Table from '../../ui/table/Table'
 import styles from './Favorites.module.scss'
 
 const Favorites: FC = () => {
 	const { favorites } = useAppSelector(state => state.toggleCat)
+
+	const favoritesBlock = useDivideBlock<ICat>(favorites)
 
 	return (
 		<div className={styles.favorites}>
@@ -21,7 +25,7 @@ const Favorites: FC = () => {
 			</div>
 
 			<div className={styles.cartsSection}>
-				<Carts {...favorites} />
+				<GridCarts {...favoritesBlock} />
 			</div>
 		</div>
 	)

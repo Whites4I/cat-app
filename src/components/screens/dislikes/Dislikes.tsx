@@ -1,12 +1,16 @@
 import { FC } from 'react'
 import { useAppSelector } from '../../../hooks/useAppSelector'
+import { useDivideBlock } from '../../../hooks/useDivideBlock'
+import { ICat } from '../../../shared/types/index.interface'
 import BackBtn from '../../ui/buttons/BackBtn/BackBtn'
-import Carts from '../../ui/section-carts/Carts'
+import GridCarts from '../../ui/carts/GridCarts'
 import Table from '../../ui/table/Table'
 import styles from './Dislikes.module.scss'
 
 const Dislikes: FC = () => {
 	const { dislikes } = useAppSelector(state => state.toggleCat)
+
+	const dislikesDivide = useDivideBlock<ICat>(dislikes)
 
 	return (
 		<div className={styles.dislikes}>
@@ -21,7 +25,7 @@ const Dislikes: FC = () => {
 			</div>
 
 			<div className={styles.cartsSection}>
-				<Carts {...dislikes} />
+				<GridCarts {...dislikesDivide} />
 			</div>
 		</div>
 	)
