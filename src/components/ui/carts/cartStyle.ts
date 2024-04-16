@@ -1,14 +1,12 @@
-interface ICarStyle {
+interface ICartStyle {
 	gridArea: string
-	border: string
 	borderRadius: string
 	width: string
 	height: string
 }
 
-export const cartStyle: ICarStyle[] = [
+export const cartStyle: ICartStyle[] = [
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'one',
 		borderRadius: '20px',
 		width: '200px',
@@ -16,7 +14,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'two',
 		borderRadius: '20px',
 		width: '200px',
@@ -24,7 +21,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'three',
 		borderRadius: '20px',
 		width: '195px',
@@ -32,7 +28,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'four',
 		borderRadius: '20px',
 		width: '410px',
@@ -40,7 +35,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'five',
 		borderRadius: '20px',
 		width: '200px',
@@ -48,7 +42,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'six',
 		borderRadius: '20px',
 		width: '200px',
@@ -56,7 +49,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'seven',
 		borderRadius: '20px',
 		width: '200px',
@@ -64,7 +56,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'eight',
 		borderRadius: '20px',
 		width: '195px',
@@ -72,7 +63,6 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'nine',
 		borderRadius: '20px',
 		width: '410px',
@@ -80,10 +70,66 @@ export const cartStyle: ICarStyle[] = [
 	},
 
 	{
-		border: '2px solid #f8f8f7',
 		gridArea: 'ten',
 		borderRadius: '20px',
 		width: '195px',
+		height: '140px',
+	},
+]
+
+interface IImageStyle {
+	borderRadius: string
+	height: string
+}
+
+export const imageStyle: IImageStyle[] = [
+	{
+		borderRadius: '20px',
+		height: '300px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '140px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '140px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '300px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '140px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '140px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '140px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '300px',
+	},
+
+	{
+		borderRadius: '20px',
+		height: '300px',
+	},
+
+	{
+		borderRadius: '20px',
 		height: '140px',
 	},
 ]

@@ -81,14 +81,6 @@
 						fill: #ff868e;
 					}
 				}
-
-				&:active {
-					@include btnActive;
-					.favoritesImage {
-						fill: #fff;
-						background-color: #fff;
-					}
-				}
 			}
 
 			.dislikesBtn {

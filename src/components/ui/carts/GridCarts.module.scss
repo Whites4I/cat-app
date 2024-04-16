@@ -1,8 +1,9 @@
-.carts {
+@import '../../../assets/styles/_mixins';
+
+.sectionCarts {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
-
 	overflow: auto;
 	height: calc(100vh - 230px);
 
@@ -30,7 +31,7 @@
 		background: #ff868e;
 	}
 
-	.cart {
+	.carts {
 		display: grid;
 		grid-template-columns: 200px 200px 200px;
 		grid-template-rows: auto auto auto;
@@ -43,5 +44,44 @@
 			'nine nine ten';
 		gap: 15px;
 		justify-items: stretch;
+
+		.cart {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			box-sizing: border-box;
+			background-color: rgba(255, 134, 142, 0.6);
+
+			.image {
+				border-radius: 20px;
+				width: 100%;
+				transition: 0.5s ease;
+				backface-visibility: hidden;
+			}
+
+			.favorites {
+				position: absolute;
+				transition: 0.5s ease;
+				opacity: 0;
+
+				.favoritesBtn {
+					@include btnContainer(40px, 40px);
+					background-color: #ffffff;
+					border-radius: 10px;
+					.favoritesImage {
+						fill: #ff868e;
+					}
+				}
+			}
+
+			&:hover .image {
+				mix-blend-mode: multiply;
+			}
+
+			&:hover .favorites {
+				opacity: 1;
+			}
+		}
 	}
 }
