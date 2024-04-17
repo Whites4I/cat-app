@@ -5,7 +5,7 @@ import styles from './BackBtn.module.scss'
 const BackBtn: FC = () => {
 	return (
 		<Link className={styles.back} to={-1 as any}>
-			<button className={styles.backBtn} type='button' title='dislikes'>
+			<button className={styles.backBtn} type='button' title='Back'>
 				<svg
 					width='12'
 					height='20'

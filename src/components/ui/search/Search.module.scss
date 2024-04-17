@@ -2,6 +2,7 @@
 
 .search {
 	display: flex;
+	position: relative;
 
 	.searchInput {
 		box-sizing: border-box;
@@ -36,8 +37,8 @@
 	.searchBtn {
 		@include btnContainer(40px, 40px, 15px);
 
-		position: relative;
-		right: 50px;
+		position: absolute;
+		right: 10px;
 		top: 10px;
 		background-color: #fbe0dc;
 		background-image: url('./search.svg');
