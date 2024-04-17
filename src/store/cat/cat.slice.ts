@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ICat } from '../../shared/types/index.interface'
+import { ICat } from '../../shared/types/ICat.interface'
 
 interface ILikeCat {
 	likes: ICat[]

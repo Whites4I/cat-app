@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_KEY } from '../API/api_key'
 import { URL } from '../API/url'
-import { ICat } from '../shared/types/index.interface'
+import { ICat } from '../shared/types/ICat.interface'
 
 export const catApi = createApi({
 	reducerPath: 'catApi',

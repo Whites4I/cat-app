@@ -1,15 +1,12 @@
 import { FC } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import Logo from '../../ui/logo/Logo'
 import styles from './Sidebar.module.scss'
 
 const Sidebar: FC = () => {
 	return (
 		<div className={styles.sidebar}>
-			<div className={styles.logo}>
-				<Link to={'/'}>
-					<img alt='Logo' src='/logo.svg'></img>
-				</Link>
-			</div>
+			<Logo />
 
 			<div className={styles.greeting}>
 				<div className={styles.greetingHi}>Hi!👋</div>

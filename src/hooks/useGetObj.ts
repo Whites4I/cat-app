@@ -1,4 +1,4 @@
-import { ICat } from '../shared/types/index.interface'
+import { ICat } from '../shared/types/ICat.interface'
 
 export const useGetObj = (data: any[] | undefined): object | undefined => {
 	return data?.find(item => {

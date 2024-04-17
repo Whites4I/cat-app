@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useAppSelector } from '../../../hooks/useAppSelector'
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
-import { ICat } from '../../../shared/types/index.interface'
+import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/BackBtn/BackBtn'
 import GridCarts from '../../ui/carts/GridCarts'
 import Table from '../../ui/table/Table'
