@@ -1,15 +1,17 @@
 import { FC } from 'react'
+import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { useAppSelector } from '../../../hooks/useAppSelector'
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
 import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
+import FavoritesToggleBtn from '../../ui/buttons/favorites-toggle-btn/FavoritesToggleBtn'
 import GridCarts from '../../ui/grid-carts/GridCarts'
 import Table from '../../ui/table/Table'
 import styles from './Favorites.module.scss'
 
 const Favorites: FC = () => {
 	const { favorites } = useAppSelector(state => state.toggleCat)
-
+	const { toggleFavorites } = useAppDispatch()
 	const favoritesBlock = useDivideBlock<ICat>(favorites)
 
 	return (
@@ -25,7 +27,12 @@ const Favorites: FC = () => {
 			</div>
 
 			<div className={styles.cartsSection}>
-				<GridCarts {...favoritesBlock} />
+				<GridCarts
+					data={favoritesBlock}
+					dataFavorite={favorites}
+					toggle={toggleFavorites}
+					component={FavoritesToggleBtn}
+				/>
 			</div>
 		</div>
 	)

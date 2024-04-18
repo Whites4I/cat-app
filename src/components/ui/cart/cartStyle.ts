@@ -1,9 +1,4 @@
-interface ICartStyle {
-	gridArea: string
-	borderRadius: string
-	width: string
-	height: string
-}
+import { ICartStyle } from '../../../shared/types/ICartStyle.interface'
 
 export const cartStyle: ICartStyle[] = [
 	{

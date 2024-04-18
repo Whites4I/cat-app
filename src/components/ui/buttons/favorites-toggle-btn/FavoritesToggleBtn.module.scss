@@ -1,0 +1,20 @@
+@import '../../../../assets/styles/_mixins';
+
+.blockBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+
+	.btn {
+		@include btnContainer(40px, 40px);
+
+		background-color: #ffffff;
+		border-radius: 10px;
+
+		.btnImage {
+			fill: #ff868e;
+		}
+	}
+}

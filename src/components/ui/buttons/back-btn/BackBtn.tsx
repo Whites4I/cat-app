@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { dImage } from '../../../../assets/image/dImage'
 import styles from './BackBtn.module.scss'
 
-const BackBtn: FC = () => {
+const BackBtn: FC = memo(() => {
 	return (
 		<Link className={styles.back} to={-1 as any}>
 			<button className={styles.backBtn} type='button' title='Back'>
@@ -19,6 +19,6 @@ const BackBtn: FC = () => {
 			</button>
 		</Link>
 	)
-}
+})
 
 export default BackBtn
