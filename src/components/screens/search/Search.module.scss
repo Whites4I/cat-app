@@ -1,0 +1,20 @@
+.search {
+	display: flex;
+	flex-direction: column;
+	width: 680px;
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 20px;
+	box-sizing: border-box;
+	height: calc(100vh - 130px);
+
+	.backSection {
+		display: flex;
+		gap: 10px;
+	}
+
+	.cartsSection {
+		margin-top: 20px;
+	}
+}

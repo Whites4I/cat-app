@@ -4,7 +4,7 @@ import styles from './Gallery.module.scss'
 
 const Gallery: FC = () => {
 	return (
-		<div className={styles.Gallery}>
+		<div className={styles.gallery}>
 			Gallery
 			<Loader />
 		</div>

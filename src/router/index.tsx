@@ -7,6 +7,7 @@ import Favorites from '../components/screens/favorites/Favorites'
 import Gallery from '../components/screens/gallery/Gallery'
 import Home from '../components/screens/home/Home'
 import Likes from '../components/screens/likes/Likes'
+import Search from '../components/screens/search/Search'
 import Voting from '../components/screens/voting/Voting'
 
 export const router = createBrowserRouter([
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
 			{ path: '/breeds', element: <Breeds /> },
 			{ path: '/favorites', element: <Favorites /> },
 			{ path: '/dislikes', element: <Dislikes /> },
+			{ path: '/search', element: <Search /> },
 		],
 	},
 ])

@@ -14,7 +14,7 @@ export const catApi = createApi({
 
 	endpoints: builder => ({
 		getRandomCat: builder.query<ICat[] | undefined, null>({
-			query: () => `images/search`,
+			query: () => `images/search?has_breeds=1`,
 			providesTags: result =>
 				result
 					? [
@@ -24,6 +24,7 @@ export const catApi = createApi({
 					  ]
 					: [{ type: 'Cat', id: 'LIST' }],
 		}),
+		// getSearchBreed: builder.query({}) доробити
 	}),
 })
 
