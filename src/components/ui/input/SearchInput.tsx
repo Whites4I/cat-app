@@ -59,20 +59,22 @@ const SearchInput: FC = () => {
 				// onKeyDown={}
 			/>
 			{showAdditionalBlock && (
-				<div className={styles.options}>
-					<ul>
-						{filteredBreeds.length ? (
-							filteredBreeds.map(breed => (
-								<li key={breed} onClick={() => handleOptionClick(breed)}>
-									{breed}
+				<div className={styles.blockOptions}>
+					<div className={styles.options}>
+						<ul>
+							{filteredBreeds.length ? (
+								filteredBreeds.map(breed => (
+									<li key={breed} onClick={() => handleOptionClick(breed)}>
+										{breed}
+									</li>
+								))
+							) : (
+								<li>
+									<p>Oops can't find any result</p>
 								</li>
-							))
-						) : (
-							<li>
-								<p>Oops can't find any result</p>
-							</li>
-						)}
-					</ul>
+							)}
+						</ul>
+					</div>
 				</div>
 			)}
 
