@@ -30,6 +30,9 @@ const SearchInput: FC = () => {
 	const handleOptionClick = (breed: string) => {
 		setSelectedBreed(breed)
 		setSearchValue(breed)
+		if (inputRef.current) {
+			inputRef.current.focus()
+		}
 	}
 
 	const handleInputClick = () => {
@@ -39,9 +42,6 @@ const SearchInput: FC = () => {
 	const handleInputBlur = () => {
 		setTimeout(() => {
 			setShowAdditionalBlock(false)
-			if (inputRef.current) {
-				inputRef.current.focus()
-			}
 		}, 200)
 	}
 
