@@ -1,14 +1,18 @@
-import { FC, useRef, useState } from 'react'
-import { breeds as data } from '../../../shared/breeds/breeds'
+import { FC, useContext, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { breeds as data } from '../../../../shared/breeds/breeds'
+import { SearchContext } from '../../../layout/Layout'
 import styles from './SearchInput.module.scss'
 
 const SearchInput: FC = () => {
+	const { changeBreed } = useContext(SearchContext)
+
 	const breeds = data.map(breed => breed.name)
 
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	const [selectedBreed, setSelectedBreed] = useState('')
-	const [searchValue, setSearchValue] = useState('')
+	const [searchValue, setSearchValue] = useState<string>('')
 	const [showAdditionalBlock, setShowAdditionalBlock] = useState(false)
 
 	const filteredBreeds = breeds.filter(breed =>
@@ -45,6 +49,20 @@ const SearchInput: FC = () => {
 		}, 200)
 	}
 
+	const navigate = useNavigate()
+
+	const handleSearchClick = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === 'Enter') {
+			changeBreed(searchValue)
+			navigate('/search')
+		}
+	}
+
+	const handleSearch = () => {
+		changeBreed(searchValue)
+		navigate('/search')
+	}
+
 	return (
 		<div className={styles.customInputContainer}>
 			<input
@@ -56,7 +74,7 @@ const SearchInput: FC = () => {
 				onClick={handleInputClick}
 				onChange={handleInputChange}
 				onBlur={handleInputBlur}
-				// onKeyDown={}
+				onKeyDown={handleSearchClick}
 			/>
 			{showAdditionalBlock && (
 				<div className={styles.blockOptions}>
@@ -82,7 +100,7 @@ const SearchInput: FC = () => {
 				className={styles.searchBtn}
 				type='button'
 				title='search'
-				// onClick={}
+				onClick={handleSearch}
 			></button>
 		</div>
 	)

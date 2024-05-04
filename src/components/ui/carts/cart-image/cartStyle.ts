@@ -1,4 +1,4 @@
-import { ICartStyle } from '../../../shared/types/ICartStyle.interface'
+import { ICartStyle } from '../../../../shared/types/ICartStyle.interface'
 
 export const cartStyle: ICartStyle[] = [
 	{

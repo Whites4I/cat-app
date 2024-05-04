@@ -1,14 +1,13 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { dImage } from '../../../../assets/image/dImage'
-import Search from '../../../ui/input/SearchInput'
+import Search from '../../../ui/inputs/search-input/SearchInput'
 import styles from './Navbar.module.scss'
 
 const Navbar: FC = () => {
 	return (
 		<div className={styles.navbar}>
 			<Search />
-
 			<div className={styles.socialPagesBtn}>
 				<NavLink
 					className={({ isActive }) =>

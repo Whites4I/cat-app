@@ -5,7 +5,7 @@ import { IToggleBtn } from './IToggleBtn'
 
 export interface IGridCarts {
 	data: ICat[][]
-	dataFavorite: ICat[]
+	dataComponent: ICat[]
 	toggle: ActionCreatorWithPayload<ICat>
 	component: FC<IToggleBtn> | any
 }

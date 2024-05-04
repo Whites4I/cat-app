@@ -24,7 +24,9 @@ const Voting: FC = () => {
 	const { toggleFavorites, toggleDislikes, toggleLikes } = useAppDispatch()
 
 	const getFavorites = useAppSelector(state => state.toggleCat.favorites)
+
 	const onFavoritesFirst = getFavorites.some(item => item.id === objCat?.id)
+
 	const onFavorites = getFavorites.some(item => item.id === nextCat?.id)
 
 	return (

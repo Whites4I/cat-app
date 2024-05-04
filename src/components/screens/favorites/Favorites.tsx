@@ -5,7 +5,7 @@ import { useDivideBlock } from '../../../hooks/useDivideBlock'
 import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import FavoritesToggleBtn from '../../ui/buttons/favorites-toggle-btn/FavoritesToggleBtn'
-import GridCarts from '../../ui/grid-carts/GridCarts'
+import GridCarts from '../../ui/carts/grid-carts/GridCarts'
 import Table from '../../ui/tables/tables-back-section/Table'
 import styles from './Favorites.module.scss'
 

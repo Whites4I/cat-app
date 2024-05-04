@@ -1,16 +1,16 @@
 import { FC } from 'react'
-import { useGetArr } from '../../../hooks/useGetArr'
-import { ICat } from '../../../shared/types/ICat.interface'
-import { IGridCarts } from '../../../shared/types/IGridCarts.interface'
-import Cart from '../cart/Cart'
-import { cartStyle } from '../cart/cartStyle'
-import NoItem from '../no-item/NoItem'
+import { useGetArr } from '../../../../hooks/useGetArr'
+import { ICat } from '../../../../shared/types/ICat.interface'
+import { IGridCarts } from '../../../../shared/types/IGridCarts.interface'
+import NoItem from '../../no-item/NoItem'
+import Cart from '../cart-image/Cart'
+import { cartStyle } from '../cart-image/cartStyle'
 import './GridCarts.module.scss'
 import styles from './GridCarts.module.scss'
 
 const GridCarts: FC<IGridCarts> = ({
 	data,
-	dataFavorite,
+	dataComponent,
 	toggle,
 	component,
 }) => {
@@ -27,7 +27,7 @@ const GridCarts: FC<IGridCarts> = ({
 									cat={cat}
 									indexCat={indexCat}
 									toggle={toggle}
-									dataArr={dataFavorite}
+									dataArr={dataComponent}
 									component={component}
 								/>
 							</div>

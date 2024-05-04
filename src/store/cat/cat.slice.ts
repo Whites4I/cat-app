@@ -1,16 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ICat } from '../../shared/types/ICat.interface'
+import { ICatData } from '../../shared/types/ICatData.interface'
 
-interface ILikeCat {
-	likes: ICat[]
-	dislikes: ICat[]
-	favorites: ICat[]
+const initialState: ICatData = {
+	likes: [],
+	dislikes: [],
+	favorites: [],
 }
 
-const initialState: ILikeCat = { likes: [], dislikes: [], favorites: [] }
-
 export const catSlice = createSlice({
-	name: 'toggleCat',
+	name: 'cat',
 	initialState,
 	reducers: {
 		toggleDislikes: (
@@ -21,32 +20,13 @@ export const catSlice = createSlice({
 			const isLiked = likes.some(item => item.id === cat.id)
 
 			if (isDisliked) {
-				const index = dislikes.findIndex(item => item.id === cat.id)
-				if (index !== -1) {
-					dislikes.splice(index, 1)
-				}
+				dislikes = dislikes.filter(item => item.id !== cat.id)
 			} else {
 				dislikes.push(cat)
 			}
 
 			if (isLiked) {
-				const index = likes.findIndex(item => item.id === cat.id)
-				if (index !== -1) {
-					likes.splice(index, 1)
-				}
-			}
-		},
-
-		toggleFavorites: ({ favorites }, { payload: cat }: PayloadAction<ICat>) => {
-			const isExist = favorites.some(item => item.id === cat.id)
-			if (isExist) {
-				const index = favorites.findIndex(item => item.id === cat.id)
-
-				if (index !== -1) {
-					favorites.splice(index, 1)
-				}
-			} else {
-				favorites.push(cat)
+				likes = likes.filter(item => item.id !== cat.id)
 			}
 		},
 
@@ -55,22 +35,26 @@ export const catSlice = createSlice({
 			{ payload: cat }: PayloadAction<ICat>
 		) => {
 			const isLiked = likes.some(item => item.id === cat.id)
-			const isDisliked = likes.some(item => item.id === cat.id)
-			if (isLiked) {
-				const index = likes.findIndex(item => item.id === cat.id)
+			const isDisliked = dislikes.some(item => item.id === cat.id)
 
-				if (index !== -1) {
-					likes.splice(index, 1)
-				}
+			if (isLiked) {
+				likes = likes.filter(item => item.id !== cat.id)
 			} else {
 				likes.push(cat)
 			}
 
 			if (isDisliked) {
-				const index = dislikes.findIndex(item => item.id === cat.id)
-				if (index !== -1) {
-					dislikes.splice(index, 1)
-				}
+				dislikes = dislikes.filter(item => item.id !== cat.id)
+			}
+		},
+
+		toggleFavorites: ({ favorites }, { payload: cat }: PayloadAction<ICat>) => {
+			const isExist = favorites.some(item => item.id === cat.id)
+
+			if (isExist) {
+				favorites = favorites.filter(item => item.id !== cat.id)
+			} else {
+				favorites.push(cat)
 			}
 		},
 	},
