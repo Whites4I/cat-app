@@ -9,7 +9,7 @@ const findCatsByBreed = (array: ICat[], breedName: string): ICat[] => {
 	})
 }
 
-const useArrayFilter = (array: ICat[], breed: string): ICat[] => {
+const useSearchByBreed = (array: ICat[], breed: string): ICat[] => {
 	const filteredMergedData: ICat[] = array.reduce((acc: ICat[], curr) => {
 		const isExist = acc.some(item => item.id === curr.id)
 
@@ -23,4 +23,4 @@ const useArrayFilter = (array: ICat[], breed: string): ICat[] => {
 	return findCatsByBreed(filteredMergedData, breed)
 }
 
-export default useArrayFilter
+export default useSearchByBreed

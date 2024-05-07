@@ -52,15 +52,17 @@ const SearchInput: FC = () => {
 	const navigate = useNavigate()
 
 	const handleSearchClick = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && changeBreed !== undefined) {
 			changeBreed(searchValue)
 			navigate('/search')
 		}
 	}
 
 	const handleSearch = () => {
-		changeBreed(searchValue)
-		navigate('/search')
+		if (changeBreed !== undefined) {
+			changeBreed(searchValue)
+			navigate('/search')
+		}
 	}
 
 	return (

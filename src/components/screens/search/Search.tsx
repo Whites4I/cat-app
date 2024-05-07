@@ -1,8 +1,8 @@
 import { FC, useContext } from 'react'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { useAppSelector } from '../../../hooks/useAppSelector'
-import useArrayFilter from '../../../hooks/useArrayFilter'
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
+import useSearchByBreed from '../../../hooks/useSearchByBreed'
 import { SearchContext } from '../../layout/Layout'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import FavoritesToggleBtn from '../../ui/buttons/favorites-toggle-btn/FavoritesToggleBtn'
@@ -20,7 +20,7 @@ const Search: FC = () => {
 	const { toggleFavorites } = useAppDispatch()
 
 	const mergedData = dislikes.concat(likes, favorites)
-	const searchData = useArrayFilter(mergedData, breedSearch as string)
+	const searchData = useSearchByBreed(mergedData, breedSearch as string)
 	const searchDivide = useDivideBlock(searchData)
 
 	return (
