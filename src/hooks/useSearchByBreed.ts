@@ -4,13 +4,15 @@ const findCatsByBreed = (array: ICat[], breedName: string): ICat[] => {
 	return array.filter(cat => {
 		return (
 			cat.breeds &&
-			cat.breeds.some((breed: { name: string }) => breed.name === breedName)
+			cat.breeds.some((breed: { name: string }) =>
+				breed.name.toLowerCase().includes(breedName.toLowerCase())
+			)
 		)
 	})
 }
 
-const useSearchByBreed = (array: ICat[], breed: string): ICat[] => {
-	const filteredMergedData: ICat[] = array.reduce((acc: ICat[], curr) => {
+const useSearchByBreed = (array: ICat[], breed?: string): ICat[] => {
+	let filteredMergedData: ICat[] = array.reduce((acc: ICat[], curr) => {
 		const isExist = acc.some(item => item.id === curr.id)
 
 		if (!isExist) {
@@ -20,7 +22,11 @@ const useSearchByBreed = (array: ICat[], breed: string): ICat[] => {
 		return acc
 	}, [])
 
-	return findCatsByBreed(filteredMergedData, breed)
+	if (breed) {
+		filteredMergedData = findCatsByBreed(filteredMergedData, breed)
+	}
+
+	return filteredMergedData
 }
 
 export default useSearchByBreed

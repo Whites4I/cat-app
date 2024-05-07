@@ -29,7 +29,7 @@ const Likes: FC = () => {
 			<div className={styles.cartsSection}>
 				<GridCarts
 					data={likesBlock}
-					dataFavorite={favorites}
+					dataComponent={favorites}
 					toggle={toggleFavorites}
 					component={FavoritesToggleBtn}
 				/>

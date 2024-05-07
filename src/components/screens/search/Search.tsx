@@ -22,7 +22,7 @@ const Search: FC = () => {
 	const mergedData = dislikes.concat(likes, favorites)
 	const searchData = useSearchByBreed(mergedData, breedSearch as string)
 	const searchDivide = useDivideBlock(searchData)
-
+	console.log(mergedData)
 	return (
 		<div className={styles.search}>
 			<div className={styles.backSection}>

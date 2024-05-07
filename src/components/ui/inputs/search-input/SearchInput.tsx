@@ -11,7 +11,7 @@ const SearchInput: FC = () => {
 
 	const inputRef = useRef<HTMLInputElement>(null)
 
-	const [selectedBreed, setSelectedBreed] = useState('')
+	const [selectedBreed, setSelectedBreed] = useState<string>('')
 	const [searchValue, setSearchValue] = useState<string>('')
 	const [showAdditionalBlock, setShowAdditionalBlock] = useState(false)
 
@@ -54,6 +54,7 @@ const SearchInput: FC = () => {
 	const handleSearchClick = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === 'Enter' && changeBreed !== undefined) {
 			changeBreed(searchValue)
+			setShowAdditionalBlock(false)
 			navigate('/search')
 		}
 	}
