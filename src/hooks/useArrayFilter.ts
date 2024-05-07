@@ -1,6 +1,15 @@
 import { ICat } from '../shared/types/ICat.interface'
 
-const useArrayFilter = (array: ICat[], value: string | undefined): ICat[] => {
+const findCatsByBreed = (array: ICat[], breedName: string): ICat[] => {
+	return array.filter(cat => {
+		return (
+			cat.breeds &&
+			cat.breeds.some((breed: { name: string }) => breed.name === breedName)
+		)
+	})
+}
+
+const useArrayFilter = (array: ICat[], breed: string): ICat[] => {
 	const filteredMergedData: ICat[] = array.reduce((acc: ICat[], curr) => {
 		const isExist = acc.some(item => item.id === curr.id)
 
@@ -11,11 +20,7 @@ const useArrayFilter = (array: ICat[], value: string | undefined): ICat[] => {
 		return acc
 	}, [])
 
-	const filteredArray = filteredMergedData.filter(item => {
-		item.breeds?.name === value
-	})
-
-	return filteredArray
+	return findCatsByBreed(filteredMergedData, breed)
 }
 
 export default useArrayFilter
