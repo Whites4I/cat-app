@@ -1,4 +1,4 @@
-import { FC, useContext, useRef, useState } from 'react'
+import { FC, useContext, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { breeds as data } from '../../../../shared/breeds/breeds'
 import { SearchContext } from '../../../layout/Layout'
@@ -7,7 +7,7 @@ import styles from './SearchInput.module.scss'
 const SearchInput: FC = () => {
 	const { changeBreed } = useContext(SearchContext)
 
-	const breeds = data.map(breed => breed.name)
+	const breeds = useMemo(() => data.map(breed => breed.name), [])
 
 	const inputRef = useRef<HTMLInputElement>(null)
 
@@ -15,8 +15,12 @@ const SearchInput: FC = () => {
 	const [searchValue, setSearchValue] = useState<string>('')
 	const [showAdditionalBlock, setShowAdditionalBlock] = useState(false)
 
-	const filteredBreeds = breeds.filter(breed =>
-		breed.toLowerCase().startsWith(searchValue.toLowerCase())
+	const filteredBreeds = useMemo(
+		() =>
+			breeds.filter(breed =>
+				breed.toLowerCase().startsWith(searchValue.toLowerCase())
+			),
+		[breeds, searchValue]
 	)
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,19 +28,16 @@ const SearchInput: FC = () => {
 		setSearchValue(value)
 		setShowAdditionalBlock(true)
 
-		if (breeds.includes(value)) {
-			setSelectedBreed(value)
-		} else {
-			setSelectedBreed('')
-		}
+		setSelectedBreed(breeds.includes(value) ? value : '')
 	}
 
 	const handleOptionClick = (breed: string) => {
 		setSelectedBreed(breed)
-		setSearchValue(breed)
+		setSearchValue('')
 		if (inputRef.current) {
-			inputRef.current.focus()
+			inputRef.current.blur()
 		}
+		handleSearch(breed)
 	}
 
 	const handleInputClick = () => {
@@ -51,17 +52,25 @@ const SearchInput: FC = () => {
 
 	const navigate = useNavigate()
 
-	const handleSearchClick = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter' && changeBreed !== undefined) {
-			changeBreed(searchValue)
-			setShowAdditionalBlock(false)
-			navigate('/search')
+	const handleSearchKeyDown: React.KeyboardEventHandler<
+		HTMLInputElement
+	> = e => {
+		if (e.key === 'Enter') {
+			handleSearch(selectedBreed || searchValue)
 		}
 	}
 
-	const handleSearch = () => {
-		if (changeBreed !== undefined) {
-			changeBreed(searchValue)
+	const handleSearchButtonClick: React.MouseEventHandler<
+		HTMLButtonElement
+	> = () => {
+		handleSearch(selectedBreed || searchValue)
+	}
+
+	const handleSearch = (breed: string) => {
+		if (changeBreed) {
+			changeBreed(breed)
+			setShowAdditionalBlock(false)
+			setSearchValue('')
 			navigate('/search')
 		}
 	}
@@ -73,11 +82,11 @@ const SearchInput: FC = () => {
 				className={styles.searchInput}
 				type='text'
 				placeholder='Search for breeds by name...'
-				value={selectedBreed ? selectedBreed : searchValue}
+				value={searchValue}
 				onClick={handleInputClick}
 				onChange={handleInputChange}
 				onBlur={handleInputBlur}
-				onKeyDown={handleSearchClick}
+				onKeyDown={handleSearchKeyDown}
 			/>
 			{showAdditionalBlock && (
 				<div className={styles.blockOptions}>
@@ -103,7 +112,7 @@ const SearchInput: FC = () => {
 				className={styles.searchBtn}
 				type='button'
 				title='search'
-				onClick={handleSearch}
+				onClick={handleSearchButtonClick}
 			></button>
 		</div>
 	)

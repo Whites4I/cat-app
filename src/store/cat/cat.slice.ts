@@ -9,7 +9,7 @@ const initialState: ICatData = {
 }
 
 export const catSlice = createSlice({
-	name: 'cat',
+	name: 'catToggle',
 	initialState,
 	reducers: {
 		toggleDislikes: (state, { payload: cat }: PayloadAction<ICat>) => {
