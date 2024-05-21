@@ -1,13 +1,6 @@
 import { ReactElement } from 'react'
+import { IMySelect } from '../../../../shared/types/IMySelect.interface'
 import styles from './MySelect.module.scss'
-
-interface IMySelect {
-	options: any[]
-	firstOption?: string
-	firstValue: '1' | '0' | 'RAND' | ''
-	title: string
-	setState: React.Dispatch<React.SetStateAction<any>>
-}
 
 const MySelect = ({
 	options,

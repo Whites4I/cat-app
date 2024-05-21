@@ -4,7 +4,7 @@ import { breeds as dataBreeds } from '../../../shared/breeds/breeds'
 import { limit as dataLimit } from '../../../shared/limit/limit'
 
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
-import { EBreed } from '../../../shared/types/EBreed.enum'
+import { useFindIdByName } from '../../../hooks/useFindIdByName'
 import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import GridCarts from '../../ui/carts/grid-carts/GridCarts'
@@ -18,13 +18,14 @@ const Breeds: FC = () => {
 	const limits = useMemo(() => dataLimit.map(limit => limit), [])
 
 	const [trigger, { data, isLoading }] = useLazyGetBreedCatQuery()
-	const [breed, setBreed] = useState<EBreed | ''>('')
-	const [selLimit, setSelLimit] = useState<number | undefined>(undefined)
+	const [breed, setBreed] = useState<string>('')
+	const [selLimit, setSelLimit] = useState<number | undefined>(5)
+
+	const idBreed = useFindIdByName(breed, dataBreeds)
 
 	useEffect(() => {
-		console.log(`Breed: ${breed}, Limit: ${selLimit}`)
-		trigger({ breed, limit: selLimit })
-	}, [breed, selLimit, trigger])
+		trigger({ idBreed, limit: selLimit })
+	}, [breed, idBreed, selLimit, trigger])
 
 	const dataBlock = useDivideBlock<ICat>(data ?? [])
 
@@ -46,25 +47,22 @@ const Breeds: FC = () => {
 							firstOption={'All Breeds'}
 							firstValue={''}
 							title={'Choose a breed'}
-							setState={value => setBreed(value as EBreed | '')}
+							setState={value => setBreed(value as string | '')}
 						/>
 					</div>
 
 					<div className={styles.chooseLimit}>
 						<MySelect
 							options={limits}
-							firstOption={'Select Limit'}
-							firstValue={''}
 							title={'Choose a limit'}
-							setState={value => setSelLimit(value ? Number(value) : undefined)}
+							setState={value => setSelLimit(value ? Number(value) : 5)}
 						/>
 					</div>
 				</div>
 			</div>
 
 			<div className={styles.cartsSection}>
-				{isLoading && <Loader />}
-				{data && <GridCarts data={dataBlock} />}
+				{isLoading ? <Loader /> : data && <GridCarts data={dataBlock} />}
 			</div>
 		</div>
 	)

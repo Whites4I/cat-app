@@ -2,7 +2,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_KEY } from '../API/api_key'
 import { URL } from '../API/url'
-import { EBreed } from '../shared/types/EBreed.enum'
 import { ICat } from '../shared/types/ICat.interface'
 
 export const catApi = createApi({
@@ -31,15 +30,15 @@ export const catApi = createApi({
 
 		getBreedCat: builder.query<
 			ICat[],
-			{ breed: EBreed | ''; limit: number | undefined }
+			{ idBreed: string | ''; limit: number | undefined }
 		>({
-			query: ({ breed, limit }) => {
+			query: ({ idBreed, limit }) => {
 				let queryParams = 'images/search?'
 				if (limit) {
 					queryParams += `limit=${limit}&`
 				}
-				if (breed) {
-					queryParams += `breed_ids=${breed}`
+				if (idBreed) {
+					queryParams += `breed_ids=${idBreed}`
 				} else {
 					queryParams = queryParams.slice(0, -1)
 				}
