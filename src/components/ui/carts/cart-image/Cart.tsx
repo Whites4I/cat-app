@@ -19,7 +19,11 @@ const Cart: FC<ICart> = ({
 				src={cat.url}
 			></img>
 			<div className={styles.container}>
-				<Component cat={cat} toggle={toggle} dataArr={dataArr} />
+				{Component ? (
+					<Component cat={cat} toggle={toggle} dataArr={dataArr} />
+				) : (
+					''
+				)}
 			</div>
 		</div>
 	)

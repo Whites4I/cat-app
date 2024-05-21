@@ -1,6 +1,8 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_KEY } from '../API/api_key'
 import { URL } from '../API/url'
+import { EBreed } from '../shared/types/EBreed.enum'
 import { ICat } from '../shared/types/ICat.interface'
 
 export const catApi = createApi({
@@ -9,7 +11,10 @@ export const catApi = createApi({
 
 	baseQuery: fetchBaseQuery({
 		baseUrl: URL,
-		headers: { 'x-api-key': API_KEY },
+		prepareHeaders: headers => {
+			headers.set('x-api-key', API_KEY)
+			return headers
+		},
 	}),
 
 	endpoints: builder => ({
@@ -20,12 +25,40 @@ export const catApi = createApi({
 					? [
 							...result.map(({ id }) => ({ type: 'Cat' as const, id })),
 							{ type: 'Cat', id: 'LIST' },
-							// eslint-disable-next-line no-mixed-spaces-and-tabs
 					  ]
 					: [{ type: 'Cat', id: 'LIST' }],
 		}),
-		// getSearchBreed: builder.query({}) доробити
+
+		getBreedCat: builder.query<
+			ICat[],
+			{ breed: EBreed | ''; limit: number | undefined }
+		>({
+			query: ({ breed, limit }) => {
+				let queryParams = 'images/search?'
+				if (limit) {
+					queryParams += `limit=${limit}&`
+				}
+				if (breed) {
+					queryParams += `breed_ids=${breed}`
+				} else {
+					queryParams = queryParams.slice(0, -1)
+				}
+				return queryParams
+			},
+			providesTags: result =>
+				result
+					? [
+							...result.map(({ id }) => ({ type: 'Cat' as const, id })),
+							{ type: 'Cat', id: 'LIST' },
+					  ]
+					: [{ type: 'Cat', id: 'LIST' }],
+		}),
 	}),
 })
 
-export const { useGetRandomCatQuery, useLazyGetRandomCatQuery } = catApi
+export const {
+	useGetRandomCatQuery,
+	useLazyGetRandomCatQuery,
+	useGetBreedCatQuery,
+	useLazyGetBreedCatQuery,
+} = catApi

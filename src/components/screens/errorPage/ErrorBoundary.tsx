@@ -4,7 +4,7 @@ import styles from './ErrorBoundary.module.scss'
 
 const ErrorBoundary: FC = () => {
 	return (
-		<div className={styles.ErrorBoundary}>
+		<div className={styles.errorBoundary}>
 			<h1 className={styles.errorText}> ERROR 404 "Page not found"</h1>
 			<div>
 				<Link to={'/'}>Go home</Link>

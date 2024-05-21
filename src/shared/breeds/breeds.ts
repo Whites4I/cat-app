@@ -1,6 +1,6 @@
-import { IBreeds } from '../types/IBreed.interface'
+import { IBreed } from '../types/IBreed.interface'
 
-export const breeds: IBreeds[] = [
+export const breeds: IBreed[] = [
 	{ id: 'abys', name: 'Abyssinian' },
 	{ id: 'aege', name: 'Aegean' },
 	{ id: 'abob', name: 'American Bobtail' },

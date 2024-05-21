@@ -5,8 +5,8 @@ import { IToggleBtn } from './IToggleBtn'
 
 export interface ICart {
 	cat: ICat
-	dataArr: ICat[] | null
+	dataArr?: ICat[]
 	indexCat: number
-	toggle: ActionCreatorWithPayload<ICat> | null
-	component: FC<IToggleBtn> | any
+	toggle?: ActionCreatorWithPayload<ICat>
+	component?: FC<IToggleBtn> | any
 }

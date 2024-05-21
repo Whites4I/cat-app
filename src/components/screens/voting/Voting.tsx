@@ -1,12 +1,9 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { dImage } from '../../../assets/image/dImage'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { useAppSelector } from '../../../hooks/useAppSelector'
 import { useGetObjG } from '../../../hooks/useGetObj'
-import {
-	useGetRandomCatQuery,
-	useLazyGetRandomCatQuery,
-} from '../../../services/CatService'
+import { useLazyGetRandomCatQuery } from '../../../services/CatService'
 import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import HistoryCart from '../../ui/history-cart/HistoryCart'
@@ -15,19 +12,17 @@ import Table from '../../ui/tables/tables-back-section/Table'
 import styles from './Voting.module.scss'
 
 const Voting: FC = () => {
-	const { isFetching, data: firstData } = useGetRandomCatQuery(null)
-	const objCat = useGetObjG<ICat>(firstData)
-
-	const [getNewCat, { isLoading, data }] = useLazyGetRandomCatQuery()
-	const nextCat = useGetObjG<ICat>(data)
+	const [getCat, { isLoading, data }] = useLazyGetRandomCatQuery()
+	const objCat = useGetObjG<ICat>(data)
 
 	const { toggleFavorites, toggleDislikes, toggleLikes } = useAppDispatch()
 
 	const getFavorites = useAppSelector(state => state.toggleCat.favorites)
+	const onFavorites = getFavorites.some(item => item.id === objCat?.id)
 
-	const onFavoritesFirst = getFavorites.some(item => item.id === objCat?.id)
-
-	const onFavorites = getFavorites.some(item => item.id === nextCat?.id)
+	useEffect(() => {
+		getCat(null)
+	}, [getCat])
 
 	return (
 		<div className={styles.voting}>
@@ -43,12 +38,10 @@ const Voting: FC = () => {
 
 			<div className={styles.voteSection}>
 				<div className={styles.imageWrapper}>
-					{isLoading || isFetching ? (
+					{isLoading ? (
 						<Loader />
-					) : nextCat ? (
-						<img className={styles.image} alt='cat' src={nextCat?.url}></img>
 					) : (
-						<img className={styles.image} alt='cat' src={objCat?.url}></img>
+						<img className={styles.image} alt='cat' src={objCat?.url} />
 					)}
 				</div>
 
@@ -58,7 +51,7 @@ const Voting: FC = () => {
 						type='button'
 						title='likes'
 						onClick={() => {
-							getNewCat(null)
+							getCat(null)
 							toggleLikes(objCat as ICat)
 						}}
 					>
@@ -94,7 +87,7 @@ const Voting: FC = () => {
 							fill='none'
 							xmlns='http://www.w3.org/2000/svg'
 						>
-							{onFavoritesFirst || onFavorites ? (
+							{onFavorites ? (
 								<path d={dImage.favoritesFilled} fill='#ffffff' />
 							) : (
 								<path
@@ -113,7 +106,7 @@ const Voting: FC = () => {
 						type='button'
 						title='dislikes'
 						onClick={() => {
-							getNewCat(null)
+							getCat(null)
 							toggleDislikes(objCat as ICat)
 						}}
 					>
