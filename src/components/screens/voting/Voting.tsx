@@ -12,7 +12,7 @@ import Table from '../../ui/tables/tables-back-section/Table'
 import styles from './Voting.module.scss'
 
 const Voting: FC = () => {
-	const [getCat, { isLoading, data }] = useLazyGetRandomCatQuery()
+	const [getCat, { data, isFetching }] = useLazyGetRandomCatQuery()
 	const objCat = useGetObjG<ICat>(data)
 
 	const { toggleFavorites, toggleDislikes, toggleLikes } = useAppDispatch()
@@ -38,7 +38,7 @@ const Voting: FC = () => {
 
 			<div className={styles.voteSection}>
 				<div className={styles.imageWrapper}>
-					{isLoading ? (
+					{isFetching ? (
 						<Loader />
 					) : (
 						<img className={styles.image} alt='cat' src={objCat?.url} />
