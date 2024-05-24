@@ -1,7 +1,9 @@
 export interface IMySelect {
 	options: any[]
 	firstOption?: string
-	firstValue?: '1' | '0' | 'RAND' | '' | '5'
-	title: string
+	firstValue?: string
+	placeholder: string
+	textToOption?: string
+	style?: React.CSSProperties | undefined
 	setState: React.Dispatch<React.SetStateAction<any>>
 }

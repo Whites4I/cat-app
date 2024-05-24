@@ -44,9 +44,8 @@ const Breeds: FC = () => {
 					<div className={styles.chooseBreed}>
 						<MySelect
 							options={breeds}
-							firstOption={'All Breeds'}
-							firstValue={''}
-							title={'Choose a breed'}
+							placeholder={'Choose a breed'}
+							style={{ width: '226px' }}
 							setState={value => setBreed(value as string | '')}
 						/>
 					</div>
@@ -54,8 +53,10 @@ const Breeds: FC = () => {
 					<div className={styles.chooseLimit}>
 						<MySelect
 							options={limits}
-							title={'Choose a limit'}
+							placeholder={'Choose a limit'}
+							style={{ width: '101px' }}
 							setState={value => setSelLimit(value ? Number(value) : 5)}
+							textToOption='Limit: '
 						/>
 					</div>
 				</div>

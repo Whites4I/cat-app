@@ -1,4 +1,92 @@
-.mySelect {
-	.myOption {
+@import '../../../../assets/styles/_mixins.scss';
+
+.sectionContainer {
+	display: flex;
+	position: relative;
+
+	.sectionInput {
+		display: flex;
+		justify-items: left;
+		background-color: #f8f8f7;
+		box-sizing: border-box;
+		width: 200px;
+		height: 40px;
+		border-radius: 10px;
+		outline: none;
+		line-height: 24px;
+		border: none;
+		padding: 0 10px 0;
+		border: 2px hidden;
+		color: #8c8c8c;
+		font-size: 16px;
+		cursor: pointer;
+		background-image: url('/arrow.svg');
+		background-repeat: no-repeat;
+		background-position: center right 10px;
+
+		&:hover {
+			padding: 0 8px 0;
+			border: 2px solid #fbe0dc;
+			background-position: center right 8px;
+		}
+	}
+
+	.blockOptions {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		box-sizing: border-box;
+		top: 60px;
+		padding: 10px 10px;
+		width: 100%;
+		max-height: 300px;
+		background-color: #ffffff;
+		border-radius: 20px;
+		z-index: 1;
+
+		.options {
+			overflow: auto;
+
+			&::-webkit-scrollbar {
+				width: 10px;
+			}
+
+			/* Track */
+			&::-webkit-scrollbar-track {
+				background: #f8f8f7;
+			}
+
+			/* Handle */
+			&::-webkit-scrollbar-thumb {
+				background: #fbe0dc;
+				border-radius: 15px;
+			}
+
+			/* Handle on hover */
+			&::-webkit-scrollbar-thumb:hover {
+				background: #ff868e;
+			}
+
+			&:scrollrad {
+				background: #ff868e;
+			}
+
+			ul {
+				color: #8c8c8c;
+				line-height: 24px;
+				font-size: 16px;
+				direction: ltr;
+				padding-right: 10px;
+
+				li {
+					padding: 3px 5px;
+					border-radius: 10px;
+					cursor: pointer;
+					&:hover {
+						@include btnHover;
+					}
+				}
+			}
+		}
 	}
 }
