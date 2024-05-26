@@ -16,7 +16,6 @@
 		line-height: 24px;
 		border: none;
 		padding: 0 10px 0;
-		border: 2px hidden;
 		color: #8c8c8c;
 		font-size: 16px;
 		cursor: pointer;
@@ -25,7 +24,7 @@
 		background-position: center right 10px;
 
 		&:hover {
-			padding: 0 8px 0;
+			padding-left: 8px;
 			border: 2px solid #fbe0dc;
 			background-position: center right 8px;
 		}

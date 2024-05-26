@@ -1,8 +1,9 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useLazyGetBreedCatQuery } from '../../../services/CatService'
 import { breeds as dataBreeds } from '../../../shared/breeds/breeds'
 import { limit as dataLimit } from '../../../shared/limit/limit'
 
+import { dImage } from '../../../assets/image/dImage'
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
 import { useFindIdByName } from '../../../hooks/useFindIdByName'
 import { ICat } from '../../../shared/types/ICat.interface'
@@ -20,53 +21,101 @@ const Breeds: FC = () => {
 			[{ id: '', name: 'All breeds' }, ...dataBreeds].map(breed => breed.name),
 		[]
 	)
-	const limits = useMemo(() => dataLimit.map(limit => limit), [])
+	const limits = useMemo(() => dataLimit, [])
 
 	const [trigger, { data, isLoading }] = useLazyGetBreedCatQuery()
 	const [breed, setBreed] = useState<string>('')
-	const [selLimit, setSelLimit] = useState<number | undefined>(5)
+	const [selLimit, setSelLimit] = useState<number>(5)
+	const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null)
 
 	const idBreed = useFindIdByName(breed, dataBreeds)
 
 	useEffect(() => {
 		trigger({ idBreed, limit: selLimit })
-	}, [breed, idBreed, selLimit, trigger])
+	}, [idBreed, selLimit, trigger])
 
-	const dataBlock = useDivideBlock<ICat>(data ?? [])
+	const sortedData = useMemo(() => {
+		if (!data) return []
+		return [...data].sort((a, b) => {
+			const nameA = a.breeds?.[0]?.name || ''
+			const nameB = b.breeds?.[0]?.name || ''
+			if (sortOrder === 'asc') return nameA.localeCompare(nameB)
+			if (sortOrder === 'desc') return nameB.localeCompare(nameA)
+			return 0
+		})
+	}, [data, sortOrder])
+
+	const dataBlock = useDivideBlock<ICat>(sortedData)
+
+	const handleSort = useCallback((order: 'asc' | 'desc') => {
+		setSortOrder(order)
+	}, [])
 
 	return (
 		<div className={styles.breeds}>
 			<div className={styles.backSection}>
-				<div className={styles.backBtn}>
-					<BackBtn />
-				</div>
-
-				<div className={styles.table}>
-					<Table content={'BREEDS'} />
-				</div>
-
+				<BackBtn />
+				<Table content='BREEDS' />
 				<div className={styles.optional}>
-					<div className={styles.chooseBreed}>
-						<MySelect
-							options={breeds}
-							placeholder={'All breeds'}
-							style={{ width: '226px' }}
-							setState={value => setBreed(value as string | '')}
-						/>
-					</div>
-
-					<div className={styles.chooseLimit}>
-						<MySelect
-							options={limits}
-							placeholder={'Limit: 5'}
-							style={{ width: '101px' }}
-							setState={value => setSelLimit(value ? Number(value) : 5)}
-							textToOption='Limit: '
-						/>
-					</div>
+					<MySelect
+						options={breeds}
+						placeholder='All breeds'
+						style={{ width: '213px' }}
+						setState={value => setBreed(value as string)}
+					/>
+					<MySelect
+						options={limits}
+						placeholder='Limit: 5'
+						style={{ width: '101px' }}
+						setState={value => setSelLimit(Number(value))}
+						textToOption='Limit: '
+					/>
+					<button
+						className={styles.sort}
+						type='button'
+						title='Sorting from Z to A'
+						onClick={() => handleSort('desc')}
+					>
+						<svg
+							width='19'
+							height='22'
+							viewBox='0 0 19 22'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								className={styles.sortImage}
+								fillRule='evenodd'
+								clipRule='evenodd'
+								d={dImage.sortFromZtoA}
+								fill='#8C8C8C'
+							/>
+						</svg>
+					</button>
+					<button
+						className={styles.sort}
+						type='button'
+						title='Sorting from A to Z'
+						onClick={() => handleSort('asc')}
+					>
+						<svg
+							width='19'
+							height='22'
+							viewBox='0 0 19 22'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								className={styles.sortImage}
+								fillRule='evenodd'
+								clipRule='evenodd'
+								d={dImage.sortFromAtoZ}
+								fill='#8C8C8C'
+							/>
+						</svg>
+					</button>
 				</div>
 			</div>
-
 			<div className={styles.cartsSection}>
 				{isLoading ? (
 					<Loader />

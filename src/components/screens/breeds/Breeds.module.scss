@@ -18,6 +18,20 @@
 		.optional {
 			display: flex;
 			gap: 10px;
+
+			.sort {
+				@include btnContainer(40px, 40px, 10px);
+				box-sizing: border-box;
+				background-color: #f8f8f7;
+				transition: none;
+
+				&:hover {
+					border: 2px solid #fbe0dc;
+					.sortImage {
+						fill: #ff868e;
+					}
+				}
+			}
 		}
 	}
 
