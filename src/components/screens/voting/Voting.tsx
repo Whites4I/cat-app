@@ -6,9 +6,9 @@ import { useGetObjG } from '../../../hooks/useGetObj'
 import { useLazyGetRandomCatQuery } from '../../../services/CatService'
 import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
-import HistoryCart from '../../ui/history-cart/HistoryCart'
+import HistoryCart from '../../ui/carts/history-cart/HistoryCart'
 import Loader from '../../ui/loader/Loader'
-import Table from '../../ui/tables/tables-back-section/Table'
+import Table from '../../ui/tables/back-section/BackSection'
 import styles from './Voting.module.scss'
 
 const Voting: FC = () => {

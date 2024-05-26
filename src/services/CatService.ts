@@ -33,14 +33,12 @@ export const catApi = createApi({
 			{ idBreed: string | ''; limit: number | undefined }
 		>({
 			query: ({ idBreed, limit }) => {
-				let queryParams = 'images/search?'
+				let queryParams = 'images/search?has_breeds=1'
 				if (limit) {
-					queryParams += `limit=${limit}&`
+					queryParams += `&limit=${limit}`
 				}
 				if (idBreed) {
-					queryParams += `breed_ids=${idBreed}`
-				} else {
-					queryParams = queryParams.slice(0, -1)
+					queryParams += `&breed_ids=${idBreed}`
 				}
 				return queryParams
 			},

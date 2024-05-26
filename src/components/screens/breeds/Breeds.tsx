@@ -10,11 +10,16 @@ import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import GridCarts from '../../ui/carts/grid-carts/GridCarts'
 import MySelect from '../../ui/inputs/select/MySelect'
 import Loader from '../../ui/loader/Loader'
-import Table from '../../ui/tables/tables-back-section/Table'
+import Table from '../../ui/tables/back-section/BackSection'
+import InfoBreed from '../../ui/tables/info-breed/InfoBreed'
 import styles from './Breeds.module.scss'
 
 const Breeds: FC = () => {
-	const breeds = useMemo(() => dataBreeds.map(breed => breed.name), [])
+	const breeds = useMemo(
+		() =>
+			[{ id: '', name: 'All breeds' }, ...dataBreeds].map(breed => breed.name),
+		[]
+	)
 	const limits = useMemo(() => dataLimit.map(limit => limit), [])
 
 	const [trigger, { data, isLoading }] = useLazyGetBreedCatQuery()
@@ -44,7 +49,7 @@ const Breeds: FC = () => {
 					<div className={styles.chooseBreed}>
 						<MySelect
 							options={breeds}
-							placeholder={'Choose a breed'}
+							placeholder={'All breeds'}
 							style={{ width: '226px' }}
 							setState={value => setBreed(value as string | '')}
 						/>
@@ -53,7 +58,7 @@ const Breeds: FC = () => {
 					<div className={styles.chooseLimit}>
 						<MySelect
 							options={limits}
-							placeholder={'Choose a limit'}
+							placeholder={'Limit: 5'}
 							style={{ width: '101px' }}
 							setState={value => setSelLimit(value ? Number(value) : 5)}
 							textToOption='Limit: '
@@ -63,7 +68,11 @@ const Breeds: FC = () => {
 			</div>
 
 			<div className={styles.cartsSection}>
-				{isLoading ? <Loader /> : data && <GridCarts data={dataBlock} />}
+				{isLoading ? (
+					<Loader />
+				) : (
+					data && <GridCarts data={dataBlock} component={InfoBreed} />
+				)}
 			</div>
 		</div>
 	)

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { dImage } from '../../../../assets/image/dImage'
-import Search from '../../../ui/inputs/search-input/SearchInput'
+import Search from '../../../ui/inputs/search/SearchInput'
 import styles from './Navbar.module.scss'
 
 const Navbar: FC = () => {

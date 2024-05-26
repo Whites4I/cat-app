@@ -1,0 +1,23 @@
+.blockInfoBread {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding: 10px;
+	box-sizing: border-box;
+
+	.containerInfoBread {
+		width: 100%;
+		height: 34px;
+		background-color: #ffffff;
+		border-radius: 10px;
+		display: flex;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #ff868e;
+		line-height: 24px;
+		font-size: 16px;
+	}
+}

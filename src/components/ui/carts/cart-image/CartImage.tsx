@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { ICart } from '../../../../shared/types/ICart.interface'
-import styles from './Cart.module.scss'
+import styles from './CartImage.module.scss'
 import { cartStyle } from './cartStyle'
 
-const Cart: FC<ICart> = ({
+const CartImage: FC<ICart> = ({
 	cat,
 	indexCat,
 	toggle,
@@ -29,4 +29,4 @@ const Cart: FC<ICart> = ({
 	)
 }
 
-export default Cart
+export default CartImage
