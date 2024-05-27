@@ -23,7 +23,7 @@ const Breeds: FC = () => {
 	)
 	const limits = useMemo(() => dataLimit, [])
 
-	const [trigger, { data, isLoading }] = useLazyGetBreedCatQuery()
+	const [trigger, { data, isFetching }] = useLazyGetBreedCatQuery()
 	const [breed, setBreed] = useState<string>('')
 	const [selLimit, setSelLimit] = useState<number>(5)
 	const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null)
@@ -117,7 +117,7 @@ const Breeds: FC = () => {
 				</div>
 			</div>
 			<div className={styles.cartsSection}>
-				{isLoading ? (
+				{isFetching ? (
 					<Loader />
 				) : (
 					data && <GridCarts data={dataBlock} component={InfoBreed} />
