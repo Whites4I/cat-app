@@ -6,7 +6,7 @@ import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import FavoritesToggleBtn from '../../ui/buttons/favorites-toggle-btn/FavoritesToggleBtn'
 import GridCarts from '../../ui/carts/grid-carts/GridCarts'
-import Table from '../../ui/tables/back-section/BackSection'
+import InfoPage from '../../ui/tables/info-page/InfoPage'
 import styles from './Likes.module.scss'
 
 const Likes: FC = () => {
@@ -22,7 +22,7 @@ const Likes: FC = () => {
 				</div>
 
 				<div className={styles.table}>
-					<Table content={'LIKES'} />
+					<InfoPage content={'LIKES'} />
 				</div>
 			</div>
 

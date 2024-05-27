@@ -35,7 +35,7 @@ const GridCarts: FC<IGridCarts> = ({
 					</div>
 				))
 			) : (
-				<NoItem />
+				<NoItem text={'No item found'} />
 			)}
 		</div>
 	)

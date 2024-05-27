@@ -11,8 +11,8 @@ import BackBtn from '../../ui/buttons/back-btn/BackBtn'
 import GridCarts from '../../ui/carts/grid-carts/GridCarts'
 import MySelect from '../../ui/inputs/select/MySelect'
 import Loader from '../../ui/loader/Loader'
-import Table from '../../ui/tables/back-section/BackSection'
 import InfoBreed from '../../ui/tables/info-breed/InfoBreed'
+import InfoPage from '../../ui/tables/info-page/InfoPage'
 import styles from './Breeds.module.scss'
 
 const Breeds: FC = () => {
@@ -55,7 +55,7 @@ const Breeds: FC = () => {
 		<div className={styles.breeds}>
 			<div className={styles.backSection}>
 				<BackBtn />
-				<Table content='BREEDS' />
+				<InfoPage content={'BREEDS'} />
 				<div className={styles.optional}>
 					<MySelect
 						options={breeds}

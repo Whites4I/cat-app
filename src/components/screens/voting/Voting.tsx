@@ -6,9 +6,10 @@ import { useGetObjG } from '../../../hooks/useGetObj'
 import { useLazyGetRandomCatQuery } from '../../../services/CatService'
 import { ICat } from '../../../shared/types/ICat.interface'
 import BackBtn from '../../ui/buttons/back-btn/BackBtn'
-import HistoryCart from '../../ui/carts/history-cart/HistoryCart'
+import LogCarts from '../../ui/carts/log-carts/LogCarts'
 import Loader from '../../ui/loader/Loader'
-import Table from '../../ui/tables/back-section/BackSection'
+import InfoPage from '../../ui/tables/info-page/InfoPage'
+import NoItem from '../../ui/tables/no-item/NoItem'
 import styles from './Voting.module.scss'
 
 const Voting: FC = () => {
@@ -34,7 +35,7 @@ const Voting: FC = () => {
 				</div>
 
 				<div className={styles.table}>
-					<Table content={'VOTING'} />
+					<InfoPage content={'VOTING'} />
 				</div>
 			</div>
 
@@ -131,7 +132,11 @@ const Voting: FC = () => {
 				</div>
 			</div>
 			<div className={styles.logSection}>
-				<HistoryCart dataLog={dataLog} />
+				{dataLog.length ? (
+					<LogCarts dataLog={dataLog} />
+				) : (
+					<NoItem text={'Add cat to Likes/Favorites/Dislike'} />
+				)}
 			</div>
 		</div>
 	)

@@ -1,0 +1,45 @@
+.likesCart {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	width: 98%;
+	background-color: #f8f8f7;
+	border-radius: 10px;
+	font-size: 16px;
+	line-height: 24px;
+	color: #8c8c8c;
+	padding: 20px;
+	box-sizing: border-box;
+
+	.time {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 61px;
+		height: 30px;
+		background-color: #ffffff;
+		border-radius: 5px;
+		color: #1d1d1d;
+	}
+
+	.text {
+		margin-left: 20px;
+
+		b {
+			color: #1d1d1d;
+		}
+	}
+
+	.emoji {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 25px;
+		height: 25px;
+		margin-left: auto;
+
+		.likesImage {
+			fill: #97eab9;
+		}
+	}
+}

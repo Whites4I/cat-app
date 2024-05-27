@@ -19,11 +19,13 @@ const catLoggerMiddleware: Middleware<object, any> =
 		if (isCatAction(action) && action.type.startsWith('catToggle/')) {
 			const currentTime = useGetCurrentTime()
 			const { id } = action.payload
+			const { name } = action.payload.breeds[0]
 			const activity = action.type.split('/')[1]
 
 			const logEntry = {
 				time: currentTime,
 				id,
+				name,
 				activity,
 			}
 
@@ -32,9 +34,9 @@ const catLoggerMiddleware: Middleware<object, any> =
 					.getState()
 					.toggleCat.favorites.some((cat: { id: string }) => cat.id === id)
 				if (isFavorite) {
-					logEntry.activity = 'addedToFavorites'
-				} else {
 					logEntry.activity = 'removedFromFavorites'
+				} else {
+					logEntry.activity = 'addedToFavorites'
 				}
 			}
 
