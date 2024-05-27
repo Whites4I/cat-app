@@ -20,6 +20,8 @@ const Voting: FC = () => {
 	const getFavorites = useAppSelector(state => state.toggleCat.favorites)
 	const onFavorites = getFavorites.some(item => item.id === objCat?.id)
 
+	const dataLog = useAppSelector(state => state.logCat.entries)
+
 	useEffect(() => {
 		getCat(null)
 	}, [getCat])
@@ -129,7 +131,7 @@ const Voting: FC = () => {
 				</div>
 			</div>
 			<div className={styles.logSection}>
-				<HistoryCart />
+				<HistoryCart dataLog={dataLog} />
 			</div>
 		</div>
 	)
