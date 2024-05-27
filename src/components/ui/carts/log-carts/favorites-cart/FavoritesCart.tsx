@@ -12,11 +12,11 @@ const FavoritesCart: FC<ILogCart> = ({ dataLog }) => {
 			<div className={styles.text}>
 				{dataLog.activity === 'addedToFavorites' ? (
 					<div>
-						Image ID: <b>{dataLog.name}</b> was added to Favorites
+						Image breed: <b>{dataLog.name}</b> was added to Favorites
 					</div>
 				) : (
 					<div>
-						Image ID: <b>{dataLog.name}</b> was removed from Favorites
+						Image breed: <b>{dataLog.name}</b> was removed from Favorites
 					</div>
 				)}
 			</div>

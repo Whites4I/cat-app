@@ -10,7 +10,7 @@ const DislikesCart: FC<ILogCart> = ({ dataLog }) => {
 				<b>{dataLog.time}</b>
 			</div>
 			<div className={styles.text}>
-				Image ID: <b>{dataLog.name}</b> was added to Dislikes
+				Image breed: <b>{dataLog.name}</b> was added to Dislikes
 			</div>
 			<div className={styles.emoji}>
 				<svg

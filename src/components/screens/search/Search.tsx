@@ -19,7 +19,7 @@ const Search: FC = () => {
 
 	const { toggleFavorites } = useAppDispatch()
 
-	const mergedData = dislikes.concat(likes, favorites)
+	const mergedData = dislikes.concat(likes)
 	const searchData = useSearchByBreed(mergedData, breedSearch as string)
 	const searchDivide = useDivideBlock(searchData)
 
