@@ -27,12 +27,14 @@ const Favorites: FC = () => {
 			</div>
 
 			<div className={styles.cartsSection}>
-				<GridCarts
-					data={favoritesBlock}
-					dataComponent={favorites}
-					toggle={toggleFavorites}
-					component={FavoritesToggleBtn}
-				/>
+				{favoritesBlock && (
+					<GridCarts
+						data={favoritesBlock}
+						dataComponent={favorites}
+						toggle={toggleFavorites}
+						component={FavoritesToggleBtn}
+					/>
+				)}
 			</div>
 		</div>
 	)

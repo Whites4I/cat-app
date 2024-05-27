@@ -36,7 +36,9 @@ const Search: FC = () => {
 			</div>
 
 			<div className={styles.cartsSection}>
-				<GridCarts data={searchDivide} component={InfoBreed} />
+				{searchDivide && (
+					<GridCarts data={searchDivide} component={InfoBreed} />
+				)}
 			</div>
 		</div>
 	)
