@@ -19,7 +19,10 @@ const catLoggerMiddleware: Middleware<object, any> =
 		if (isCatAction(action) && action.type.startsWith('catToggle/')) {
 			const currentTime = useGetCurrentTime()
 			const { id } = action.payload
-			const { name } = action.payload.breeds[0]
+			let name = 'Unspecified'
+			if (action.payload.breeds.length) {
+				name = action.payload.breeds[0].name
+			}
 			const activity = action.type.split('/')[1]
 
 			const logEntry = {

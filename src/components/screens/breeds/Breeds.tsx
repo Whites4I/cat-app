@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useLazyGetBreedCatQuery } from '../../../services/CatService'
-import { breeds as dataBreeds } from '../../../shared/breeds/breeds'
-import { limit as dataLimit } from '../../../shared/limit/limit'
+import { breeds as dataBreeds } from '../../../shared/filters/breeds/breeds'
+import { limits as dataLimit } from '../../../shared/filters/limits/limit'
 
 import { dImage } from '../../../assets/image/dImage'
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
@@ -25,7 +25,7 @@ const Breeds: FC = () => {
 
 	const [trigger, { data, isFetching }] = useLazyGetBreedCatQuery()
 	const [breed, setBreed] = useState<string>('')
-	const [selLimit, setSelLimit] = useState<number>(5)
+	const [selLimit, setSelLimit] = useState<string>('5')
 	const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null)
 
 	const idBreed = useFindIdByName(breed, dataBreeds)
@@ -58,16 +58,18 @@ const Breeds: FC = () => {
 				<InfoPage content={'BREEDS'} />
 				<div className={styles.optional}>
 					<MySelect
+						style={{ width: '213px' }}
+						title='Breeds'
 						options={breeds}
 						placeholder='All breeds'
-						style={{ width: '213px' }}
-						setState={value => setBreed(value as string)}
+						setState={value => setBreed(value)}
 					/>
 					<MySelect
+						style={{ width: '101px' }}
+						title='Limit'
 						options={limits}
 						placeholder='Limit: 5'
-						style={{ width: '101px' }}
-						setState={value => setSelLimit(Number(value))}
+						setState={value => setSelLimit(value)}
 						textToOption='Limit: '
 					/>
 					<button
@@ -116,13 +118,13 @@ const Breeds: FC = () => {
 					</button>
 				</div>
 			</div>
-			<div className={styles.cartsSection}>
-				{isFetching ? (
-					<Loader />
-				) : (
-					data && <GridCarts data={dataBlock} component={InfoBreed} />
-				)}
-			</div>
+			{isFetching ? (
+				<Loader />
+			) : (
+				<div className={styles.cartsSection}>
+					<GridCarts data={dataBlock} component={InfoBreed} />
+				</div>
+			)}
 		</div>
 	)
 }

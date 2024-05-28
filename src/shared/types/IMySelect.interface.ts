@@ -1,5 +1,6 @@
 export interface IMySelect {
 	options: any[]
+	title?: string
 	firstOption?: string
 	firstValue?: string
 	placeholder: string

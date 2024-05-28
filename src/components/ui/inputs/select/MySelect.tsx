@@ -8,6 +8,7 @@ const MySelect = ({
 	setState,
 	style,
 	textToOption,
+	title,
 }: IMySelect): ReactElement => {
 	const inputRef = useRef<HTMLInputElement>(null)
 
@@ -43,7 +44,7 @@ const MySelect = ({
 				className={styles.sectionInput}
 				ref={inputRef}
 				type='button'
-				title={placeholder}
+				title={title}
 				value={
 					option ? (textToOption ? textToOption + option : option) : placeholder
 				}

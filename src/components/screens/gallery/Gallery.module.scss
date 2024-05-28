@@ -1,0 +1,46 @@
+@import '../../../assets/styles/_mixins';
+
+.gallery {
+	display: flex;
+	flex-direction: column;
+	width: 680px;
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 20px;
+	box-sizing: border-box;
+	height: calc(100vh - 130px);
+
+	.backSection {
+		display: flex;
+		gap: 10px;
+	}
+
+	.filters {
+		display: flex;
+		align-content: flex-end;
+		flex-wrap: wrap;
+		margin-top: 20px;
+		width: 640px;
+		height: 156px;
+		padding: 20px;
+		box-sizing: border-box;
+		background-color: #f8f8f7;
+		border-radius: 20px;
+		gap: 10px;
+
+		.orders label,
+		.types label,
+		.limits label,
+		.breeds label {
+			margin-left: 10px;
+			line-height: 18px;
+			font-size: 10px;
+			color: #8c8c8c;
+		}
+	}
+
+	.cartsSection {
+		margin-top: 20px;
+	}
+}

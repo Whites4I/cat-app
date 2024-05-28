@@ -1,6 +1,6 @@
 import { FC, useContext, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { breeds as data } from '../../../../shared/breeds/breeds'
+import { breeds as data } from '../../../../shared/filters/breeds/breeds'
 import { SearchContext } from '../../../layout/Layout'
 import styles from './SearchInput.module.scss'
 
