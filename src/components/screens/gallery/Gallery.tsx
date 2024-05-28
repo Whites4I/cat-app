@@ -23,27 +23,28 @@ const Gallery: FC = () => {
 			[{ id: '', name: 'All breeds' }, ...dataBreeds].map(breed => breed.name),
 		[]
 	)
-
 	const orders = useMemo(
 		() => [{ id: '', name: 'Random' }, ...dataOrders].map(order => order.name),
 		[]
 	)
-
 	const types = useMemo(
 		() => [{ id: '', name: 'All' }, ...dataTypes].map(type => type.name),
 		[]
 	)
+	const limits = useMemo(() => dataLimit, [])
 
 	const { favorites } = useAppSelector(state => state.toggleCat)
 	const { toggleFavorites } = useAppDispatch()
 
-	const limits = useMemo(() => dataLimit, [])
-
 	const [trigger, { data, isFetching }] = useLazyGetFilteredCatQuery()
-	const [breed, setBreed] = useState<string>('')
-	const [selLimit, setSelLimit] = useState<string>('5')
-	const [order, setOrder] = useState<'ASC' | 'DESC' | ''>('')
-	const [type, setType] = useState<'img' | 'gif' | ''>('')
+	const [filters, setFilters] = useState({
+		breed: '',
+		selLimit: '5',
+		order: '',
+		type: '',
+	})
+
+	const { breed, selLimit, order, type } = filters
 
 	const idBreed = useFindIdByName(breed, dataBreeds)
 	const idOrder = useFindIdByName(order, dataOrders)
@@ -53,76 +54,67 @@ const Gallery: FC = () => {
 		trigger({ idBreed, limit: selLimit, idOrder, idType })
 	}, [idBreed, selLimit, trigger, idOrder, idType])
 
-	const dataBlock = useDivideBlock<ICat>(data ? data : [])
+	const dataBlock = useDivideBlock<ICat>(data || [])
+
+	const handleFilterChange = (key: string, value: string) => {
+		setFilters(prevFilters => ({ ...prevFilters, [key]: value }))
+	}
+
+	const filterConfigurations = [
+		{
+			label: 'ORDER',
+			options: orders,
+			stateKey: 'order',
+			placeholder: 'Random',
+		},
+		{
+			label: 'TYPE',
+			options: types,
+			stateKey: 'type',
+			placeholder: 'All types',
+		},
+		{
+			label: 'BREED',
+			options: breeds,
+			stateKey: 'breed',
+			placeholder: 'All breeds',
+		},
+		{
+			label: 'LIMIT',
+			options: limits,
+			stateKey: 'limit',
+			placeholder: 'Limit: 5',
+			textToOption: 'Limit: ',
+		},
+	]
 
 	return (
 		<div className={styles.gallery}>
 			<div className={styles.backSection}>
 				<BackBtn />
-				<InfoPage content={'GALLERY'} />
+				<InfoPage content='GALLERY' />
 			</div>
 
 			<div className={styles.filters}>
-				<div className={styles.orders}>
-					<label>ORDER</label>
-					<MySelect
-						style={{
-							width: '290px',
-							backgroundColor: '#FFFFFF',
-							color: '#1d1d1d',
-						}}
-						title='Order'
-						options={orders}
-						placeholder='Random'
-						setState={value => setOrder(value)}
-					/>
-				</div>
-
-				<div className={styles.types}>
-					<label>TYPE</label>
-					<MySelect
-						style={{
-							width: '290px',
-							backgroundColor: '#FFFFFF',
-							color: '#1d1d1d',
-						}}
-						title='Type'
-						options={types}
-						placeholder='All types'
-						setState={value => setType(value)}
-					/>
-				</div>
-
-				<div className={styles.breeds}>
-					<label>BREED</label>
-					<MySelect
-						style={{
-							width: '290px',
-							backgroundColor: '#FFFFFF',
-							color: '#1d1d1d',
-						}}
-						title='Breed'
-						options={breeds}
-						placeholder='All breeds'
-						setState={value => setBreed(value)}
-					/>
-				</div>
-
-				<div className={styles.limits}>
-					<label>LIMIT</label>
-					<MySelect
-						style={{
-							width: '240px',
-							backgroundColor: '#FFFFFF',
-							color: '#1d1d1d',
-						}}
-						title='Limit'
-						options={limits}
-						placeholder='Limit: 5'
-						setState={value => setSelLimit(value)}
-						textToOption='Limit: '
-					/>
-				</div>
+				{filterConfigurations.map(
+					({ label, options, stateKey, placeholder, textToOption }) => (
+						<div className={styles[`${stateKey}s`]} key={stateKey}>
+							<label>{label}</label>
+							<MySelect
+								style={{
+									width: stateKey === 'limit' ? '240px' : '290px',
+									backgroundColor: '#FFFFFF',
+									color: '#1d1d1d',
+								}}
+								title={label}
+								options={options}
+								placeholder={placeholder}
+								setState={value => handleFilterChange(stateKey, value)}
+								textToOption={textToOption}
+							/>
+						</div>
+					)
+				)}
 			</div>
 
 			{isFetching ? (
