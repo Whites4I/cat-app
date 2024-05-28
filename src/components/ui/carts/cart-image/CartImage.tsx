@@ -14,6 +14,7 @@ const CartImage: FC<ICart> = ({
 		<div className={styles.cart}>
 			<img
 				className={styles.image}
+				loading='lazy'
 				style={cartStyle[indexCat]}
 				alt={`Cat id: ${cat.id}`}
 				src={cat.url}

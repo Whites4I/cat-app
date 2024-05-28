@@ -44,7 +44,12 @@ const Voting: FC = () => {
 					{isFetching ? (
 						<Loader />
 					) : (
-						<img className={styles.image} alt='cat' src={objCat?.url} />
+						<img
+							className={styles.image}
+							loading='lazy'
+							alt='cat'
+							src={objCat?.url}
+						/>
 					)}
 				</div>
 
