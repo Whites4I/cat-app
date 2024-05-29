@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { API_KEY } from '../API/api_key'
-import { URL } from '../API/url'
+import { API_KEY } from '../API/API_KEY'
+import { URL } from '../API/URL'
 import { ICat } from '../shared/types/ICat.interface'
 
 export const catApi = createApi({
