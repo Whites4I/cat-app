@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react'
+import { dImage } from '../../../assets/image/dImage'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { useAppSelector } from '../../../hooks/useAppSelector'
 import { useDivideBlock } from '../../../hooks/useDivideBlock'
@@ -50,9 +51,13 @@ const Gallery: FC = () => {
 	const idOrder = useFindIdByName(order, dataOrders)
 	const idType = useFindIdByName(type, dataTypes)
 
-	useEffect(() => {
+	const fetchData = () => {
 		trigger({ idBreed, limit, idOrder, idType })
-	}, [idBreed, limit, trigger, idOrder, idType])
+	}
+
+	useEffect(() => {
+		fetchData()
+	}, [idBreed, limit, idOrder, idType])
 
 	const dataBlock = useDivideBlock<ICat>(data || [])
 
@@ -115,6 +120,28 @@ const Gallery: FC = () => {
 						</div>
 					)
 				)}
+				<button
+					className={styles.updateBtn}
+					type='button'
+					title='Update'
+					onClick={fetchData}
+				>
+					<svg
+						width='19'
+						height='22'
+						viewBox='0 0 19 22'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'
+					>
+						<path
+							className={styles.updateImage}
+							fillRule='evenodd'
+							clipRule='evenodd'
+							d={dImage.update}
+							fill='#FF868E'
+						/>
+					</svg>
+				</button>
 			</div>
 
 			{isFetching ? (

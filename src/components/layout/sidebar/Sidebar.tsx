@@ -15,7 +15,7 @@ const Sidebar: FC = () => {
 
 			<div className={styles.menuMain}>
 				<div className={styles.menuText}>
-					<strong>Lets start using The Cat API</strong>
+					<b>Lets start using The Cat API</b>
 				</div>
 
 				<div className={styles.menuButtons}>

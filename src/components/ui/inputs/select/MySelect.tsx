@@ -23,7 +23,7 @@ const MySelect = ({
 	}
 
 	const handleInputClick = () => {
-		setShowAdditionalBlock(true)
+		setShowAdditionalBlock(prevState => !prevState)
 	}
 
 	const handleInputBlur = () => {
