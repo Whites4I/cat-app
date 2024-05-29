@@ -39,20 +39,20 @@ const Gallery: FC = () => {
 	const [trigger, { data, isFetching }] = useLazyGetFilteredCatQuery()
 	const [filters, setFilters] = useState({
 		breed: '',
-		selLimit: '5',
+		limit: '5',
 		order: '',
 		type: '',
 	})
 
-	const { breed, selLimit, order, type } = filters
+	const { breed, limit, order, type } = filters
 
 	const idBreed = useFindIdByName(breed, dataBreeds)
 	const idOrder = useFindIdByName(order, dataOrders)
 	const idType = useFindIdByName(type, dataTypes)
 
 	useEffect(() => {
-		trigger({ idBreed, limit: selLimit, idOrder, idType })
-	}, [idBreed, selLimit, trigger, idOrder, idType])
+		trigger({ idBreed, limit, idOrder, idType })
+	}, [idBreed, limit, trigger, idOrder, idType])
 
 	const dataBlock = useDivideBlock<ICat>(data || [])
 
@@ -123,6 +123,7 @@ const Gallery: FC = () => {
 				<div className={styles.cartsSection}>
 					{dataBlock && (
 						<GridCarts
+							style={{ height: 'calc(100vh - 406px)' }}
 							data={dataBlock}
 							dataComponent={favorites}
 							toggle={toggleFavorites}

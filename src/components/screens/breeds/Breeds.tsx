@@ -25,14 +25,14 @@ const Breeds: FC = () => {
 
 	const [trigger, { data, isFetching }] = useLazyGetBreedCatQuery()
 	const [breed, setBreed] = useState<string>('')
-	const [selLimit, setSelLimit] = useState<string>('5')
+	const [limit, setLimit] = useState<string>('5')
 	const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null)
 
 	const idBreed = useFindIdByName(breed, dataBreeds)
 
 	useEffect(() => {
-		trigger({ idBreed, limit: selLimit })
-	}, [idBreed, selLimit, trigger])
+		trigger({ idBreed, limit })
+	}, [idBreed, limit, trigger])
 
 	const sortedData = useMemo(() => {
 		if (!data) return []
@@ -69,7 +69,7 @@ const Breeds: FC = () => {
 						title='Limit'
 						options={limits}
 						placeholder='Limit: 5'
-						setState={value => setSelLimit(value)}
+						setState={value => setLimit(value)}
 						textToOption='Limit: '
 					/>
 					<button

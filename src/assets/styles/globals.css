@@ -184,6 +184,12 @@ ul {
 	outline-offset: 0;
 }
 
+@font-face {
+	font-family: Jost;
+	src: url(../fonts/Jost-Regular.ttf) format('opentype');
+}
+
 body {
+	font-family: 'Jost';
 	background-color: #f8f8f7;
 }

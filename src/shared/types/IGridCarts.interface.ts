@@ -8,4 +8,5 @@ export interface IGridCarts {
 	dataComponent?: ICat[]
 	toggle?: ActionCreatorWithPayload<ICat>
 	component?: FC<IToggleBtn> | any
+	style?: React.CSSProperties | undefined
 }

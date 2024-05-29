@@ -13,11 +13,12 @@ const GridCarts: FC<IGridCarts> = ({
 	dataComponent,
 	toggle,
 	component,
+	style,
 }) => {
 	const itemArr: ICat[][] = useGetArr(data)
 
 	return (
-		<div className={styles.sectionCarts}>
+		<div className={styles.sectionCarts} style={style}>
 			{itemArr.length ? (
 				itemArr.map((cats, indexArr) => (
 					<div className={styles.carts} key={indexArr}>
